@@ -24,7 +24,6 @@ jobs:
 
     - name: Push changes
       run: |
-        git pull -r
         git add .
         git diff-index --quiet HEAD || git commit -m "rustfmt"
 

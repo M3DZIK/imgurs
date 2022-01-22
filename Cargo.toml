@@ -1,0 +1,38 @@
+[package]
+name = "imgurs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dirs = "4.0.0"
+serde = "1.0.134"
+serde_derive = "1.0.134"
+shadow = "0.0.1"
+toml = "0.5.8"
+serde_json = "1.0.75"
+chrono = "0.4.19"
+anyhow = "1.0.53"
+base64 = "0.13.0"
+
+[dependencies.clap]
+version = "3.0.7"
+features = ["derive", "cargo", "unicode"]
+
+[dependencies.log]
+version = "0.4.14"
+features = ["release_max_level_info"]
+
+[dependencies.simple_logger]
+version = "2.1.0"
+default-features = false
+features = ["colors"]
+
+[dependencies.reqwest]
+version = "0.11.9"
+features = ["json"]
+
+[dependencies.tokio]
+version = "1.15.0"
+features = ["full"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

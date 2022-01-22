@@ -3,12 +3,6 @@
 version = 3
 
 [[package]]
-name = "anyhow"
-version = "1.0.53"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "94a45b455c14666b85fc40a019e8ab9eb75e3a124e05494f5397122bc9eb06e0"
-
-[[package]]
 name = "atty"
 version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -377,7 +371,6 @@ dependencies = [
 name = "imgurs"
 version = "0.1.0"
 dependencies = [
- "anyhow",
  "base64",
  "chrono",
  "clap",
@@ -387,7 +380,6 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_json",
- "shadow",
  "simple_logger",
  "tokio",
  "toml",
@@ -851,15 +843,6 @@ dependencies = [
  "itoa 1.0.1",
  "ryu",
  "serde",
-]
-
-[[package]]
-name = "shadow"
-version = "0.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dcaa1dbf13cc052b53af59e70dd467e8e94d6abf8d0eac1f1d15d3e165973b86"
-dependencies = [
- "libc",
 ]
 
 [[package]]

@@ -19,10 +19,21 @@ jobs:
         git config --global user.name "MedzikUserBot"
         git config --global user.email "rm99iv9s@duck.com"
 
-    - name: Lint
-      run: cargo fmt
+    - name: Setup Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        override: true
+        components: rustfmt, clippy
 
-    - name: Push changes
+    - name: cargo fmt
+      uses: actions-rs/cargo@v1
+      with:
+        command: fmt
+        args: --all
+
+    - name: Commit changes
       run: |
         git add .
         git diff-index --quiet HEAD || git commit -m "rustfmt"

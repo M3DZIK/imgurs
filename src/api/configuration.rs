@@ -24,8 +24,8 @@ impl ImgurHandle {
     pub fn new(client_id: String) -> Self {
         let client = Client::new();
         ImgurHandle {
-            client_id: client_id,
-            client: client,
+            client_id,
+            client,
         }
     }
 }

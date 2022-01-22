@@ -1,5 +1,5 @@
-use std::fmt;
 use reqwest::Client;
+use std::fmt;
 
 macro_rules! api_url (
     ($path: expr) => (
@@ -25,7 +25,7 @@ impl ImgurHandle {
         let client = Client::new();
         ImgurHandle {
             client_id: client_id,
-            client: client
+            client: client,
         }
     }
 }

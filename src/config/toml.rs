@@ -1,16 +1,16 @@
-use toml::from_str;
-use serde_derive::Deserialize;
 use dirs::config_dir;
+use serde_derive::Deserialize;
 use std::fs::read_to_string;
+use toml::from_str;
 
 #[derive(Debug, Deserialize)]
 pub struct Config {
-  pub imgur: ConfigImgur,
+    pub imgur: ConfigImgur,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct ConfigImgur {
-  pub id: String,
+    pub id: String,
 }
 
 pub fn parse() -> Result<Config, String> {

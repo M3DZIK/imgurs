@@ -40,7 +40,9 @@ pub async fn rate_limit(c: ImgurHandle) -> Result<RateLimitInfo, String> {
 
     if status.is_client_error() || status.is_server_error() {
         let body = res.text().await.map_err(|err| err.to_string())?;
-        Err(format!("server returned non-successful status code = {status}. body = {body}"))
+        Err(format!(
+            "server returned non-successful status code = {status}. body = {body}"
+        ))
     } else {
         let content: RateLimitInfo = res.json().await.map_err(|err| err.to_string())?;
         Ok(content)

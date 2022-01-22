@@ -51,7 +51,9 @@ pub async fn upload_image(c: ImgurHandle, image: &str) -> Result<ImageInfo, Stri
 
     if status.is_client_error() || status.is_server_error() {
         let body = res.text().await.map_err(|err| err.to_string())?;
-        Err(format!("server returned non-successful status code = {status}. body = {body}"))
+        Err(format!(
+            "server returned non-successful status code = {status}. body = {body}"
+        ))
     } else {
         let content: ImageInfo = res.json().await.map_err(|err| err.to_string())?;
         Ok(content)

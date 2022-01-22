@@ -19,7 +19,9 @@ pub async fn delete_image(c: ImgurHandle, delete_hash: String) -> Result<String,
 
     if status.is_client_error() || status.is_server_error() {
         let body = res.text().await.map_err(|err| err.to_string())?;
-        Err(format!("server returned non-successful status code = {status}. body = {body}"))
+        Err(format!(
+            "server returned non-successful status code = {status}. body = {body}"
+        ))
     } else {
         Ok("If the delete hash was correct the image was deleted!".to_string())
     }

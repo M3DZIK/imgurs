@@ -1,13 +1,13 @@
 use imgurs::api::configuration::ImgurHandle;
 
-use log::{info, error};
-use std::path::Path;
-use std::fs;
 use base64;
+use log::{error, info};
+use std::fs;
+use std::path::Path;
 
 use chrono::prelude::DateTime;
 use chrono::Utc;
-use std::time::{UNIX_EPOCH, Duration};
+use std::time::{Duration, UNIX_EPOCH};
 
 pub async fn upload_image(client: ImgurHandle, path: &str) {
     let image: String;

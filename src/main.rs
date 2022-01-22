@@ -1,5 +1,5 @@
-mod config;
 mod cli;
+mod config;
 
 use cli::cli::parse;
 

@@ -1,4 +1,4 @@
-use clap::{Parser, Subcommand, AppSettings};
+use clap::{AppSettings, Parser, Subcommand};
 
 use imgurs::api::configuration::ImgurHandle;
 
@@ -26,17 +26,13 @@ enum Commands {
         setting(AppSettings::ArgRequiredElseHelp),
         about = "Upload image to imgur"
     )]
-    Upload {
-        path: String
-    },
+    Upload { path: String },
 
     #[clap(
         setting(AppSettings::ArgRequiredElseHelp),
         about = "Upload image to imgur"
     )]
-    Delete {
-        delete_hash: String
-    },
+    Delete { delete_hash: String },
 }
 
 pub async fn parse(client: ImgurHandle) {
@@ -44,18 +40,15 @@ pub async fn parse(client: ImgurHandle) {
 
     match &args.command {
         Commands::Credits => {
-            credits::credits(client)
-                .await;
+            credits::credits(client).await;
         }
 
         Commands::Upload { path } => {
-            upload_image::upload_image(client, path)
-                .await;
+            upload_image::upload_image(client, path).await;
         }
 
         Commands::Delete { delete_hash } => {
-            delete_image::delete_image(client, delete_hash.to_string())
-                .await;
+            delete_image::delete_image(client, delete_hash.to_string()).await;
         }
     }
 }

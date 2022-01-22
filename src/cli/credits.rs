@@ -1,11 +1,11 @@
 use imgurs::api::configuration::ImgurHandle;
 use imgurs::api::rate_limit::*;
 
-use log::{info, error};
+use log::{error, info};
 
 use chrono::prelude::DateTime;
 use chrono::Utc;
-use std::time::{UNIX_EPOCH, Duration};
+use std::time::{Duration, UNIX_EPOCH};
 
 pub async fn credits(client: ImgurHandle) {
     match rate_limit(client).await {

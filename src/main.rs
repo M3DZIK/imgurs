@@ -1,11 +1,11 @@
 mod cli;
 mod config;
 
-use cli::cli::parse;
+use cli::parse::parse;
 
 use simple_logger::SimpleLogger;
 
-use imgurs::api::configuration::ImgurHandle;
+use imgurs::api::ImgurHandle;
 
 #[tokio::main]
 async fn main() {

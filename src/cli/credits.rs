@@ -1,5 +1,5 @@
-use imgurs::api::configuration::ImgurHandle;
 use imgurs::api::rate_limit::*;
+use imgurs::api::ImgurHandle;
 
 use log::{error, info};
 

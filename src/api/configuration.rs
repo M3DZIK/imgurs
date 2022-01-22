@@ -23,9 +23,6 @@ impl fmt::Debug for ImgurHandle {
 impl ImgurHandle {
     pub fn new(client_id: String) -> Self {
         let client = Client::new();
-        ImgurHandle {
-            client_id,
-            client,
-        }
+        ImgurHandle { client_id, client }
     }
 }

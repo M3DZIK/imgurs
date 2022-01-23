@@ -19,19 +19,19 @@ pub fn print_image_info(i: ImageInfo) {
     if i.data.title != None {
         info!(
             "Title        {}",
-            i.data.title.unwrap_or("unknown".to_string())
+            i.data.title.unwrap_or_else(|| "unknown".to_string())
         );
     }
     if i.data.description != None {
         info!(
             "Description  {}",
-            i.data.description.unwrap_or("unknown".to_string())
+            i.data.description.unwrap_or_else(|| "unknown".to_string())
         );
     }
     if i.data.deletehash != None {
         info!(
             "Deletehash   {}",
-            i.data.deletehash.unwrap_or("unknown".to_string())
+            i.data.deletehash.unwrap_or_else(|| "unknown".to_string())
         );
     }
 

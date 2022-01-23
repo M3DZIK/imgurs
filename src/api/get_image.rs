@@ -1,24 +1,17 @@
 use crate::api::configuration::{api_url, ImgurHandle};
 use crate::api::ImageInfo;
 
-use std::collections::HashMap;
-
-pub async fn upload_image(c: ImgurHandle, image: &str) -> Result<ImageInfo, String> {
+pub async fn get_image(c: ImgurHandle, image: &str) -> Result<ImageInfo, String> {
     const VERSION: Option<&str> = option_env!("CARGO_PKG_VERSION");
-
-    let mut form = HashMap::new();
-
-    form.insert("image", image.to_string());
 
     let res = c
         .client
-        .post(api_url!("image"))
+        .get(api_url!(format!("image/{image}")))
         .header("Authorization", format!("Client-ID {}", c.client_id))
         .header(
             "User-Agent",
             format!("Imgurs/{:?}", VERSION.unwrap_or("unknown")),
         )
-        .form(&form)
         .send()
         .await
         .map_err(|err| err.to_string())?;
@@ -26,9 +19,8 @@ pub async fn upload_image(c: ImgurHandle, image: &str) -> Result<ImageInfo, Stri
     let status = res.status();
 
     if status.is_client_error() || status.is_server_error() {
-        let body = res.text().await.map_err(|err| err.to_string())?;
         Err(format!(
-            "server returned non-successful status code = {status}. body = {body}"
+            "server returned non-successful status code = {status}."
         ))
     } else {
         let content: ImageInfo = res.json().await.map_err(|err| err.to_string())?;

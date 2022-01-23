@@ -89,6 +89,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ matrix.artifact_name }}
           tag: ${{ github.ref }}
-          asset_name: miniserve-$tag-${{ matrix.release_name }}
+          asset_name: imgurs-$tag-${{ matrix.release_name }}
           body: ${{ steps.changelog_reader.outputs.log_entry }}
         if: startsWith(github.ref, 'refs/tags/v')

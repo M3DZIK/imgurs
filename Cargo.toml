@@ -1,7 +1,11 @@
 [package]
 name = "imgurs"
+description = "API for Imgur"
+license = "BSD-3-Clause"
+rust-version = "1.58"
 version = "0.1.0"
 edition = "2021"
+authors = ["MedzikUser <nivua1fn@duck.com>"]
 
 [dependencies]
 dirs = "4.0.0"

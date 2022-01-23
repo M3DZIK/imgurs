@@ -5,13 +5,14 @@ on: [push, pull_request]
 jobs:
   binaries:
     strategy:
+      fail-fast: false
+
       matrix:
         target:
           - x86_64-unknown-linux-gnu
           - x86_64-unknown-linux-musl
           - x86_64-pc-windows-msvc
           - x86_64-apple-darwin
-          - x86_64-unknown-freebsd
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
@@ -44,14 +45,6 @@ jobs:
             cross: false
             strip: true
             compress: true
-            cargo_flags: ""
-          - os: ubuntu-latest
-            target: x86_64-unknown-freebsd
-            artifact_name: target/x86_64-unknown-freebsd/release/imgurs
-            release_name: x86_64-unknown-freebsd
-            cross: true
-            strip: false
-            compress: false
             cargo_flags: ""
 
     name: ${{ matrix.os }} for ${{ matrix.target }}

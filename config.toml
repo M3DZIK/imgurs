@@ -1,2 +1,5 @@
 [imgur]
 id = '3e3ce0d7ac14d56'
+
+[notification]
+enable = true

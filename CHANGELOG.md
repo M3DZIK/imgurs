@@ -10,10 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### CLI
 - create default config, if not exits
-- when the image uploaded, send a notification
+- when the image uploaded, send a notification (can be turn off in config)
 
 ### Library
-- rustls
+- change openssl to rustls
 
 ## [0.1.0] - 2022-01-23
 ### CLI

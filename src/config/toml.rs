@@ -6,11 +6,17 @@ use toml::from_str;
 #[derive(Debug, Deserialize)]
 pub struct Config {
     pub imgur: ConfigImgur,
+    pub notification: ConfigNotification
 }
 
 #[derive(Debug, Deserialize)]
 pub struct ConfigImgur {
     pub id: String,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct ConfigNotification {
+    pub enable: bool,
 }
 
 pub fn parse() -> Result<Config, String> {

@@ -14,6 +14,8 @@ use imgurs::api::ImageInfo;
 use notify_rust::Notification;
 use std::process::exit;
 
+use crate::config::toml::parse;
+
 pub fn print_image_info(i: ImageInfo, notify: bool) {
     let d = UNIX_EPOCH + Duration::from_secs(i.data.datetime.try_into().unwrap());
     let datetime = DateTime::<Utc>::from(d);
@@ -48,7 +50,9 @@ pub fn print_image_info(i: ImageInfo, notify: bool) {
     info!("Bandwidth    {}", i.data.bandwidth);
     info!("Link         {}", i.data.link);
 
-    if notify {
+    let config = parse().unwrap();
+
+    if notify && config.notification.enable {
         Notification::new()
             .summary("Imgurs")
             .body(&format!("Uploaded {}", i.data.link))

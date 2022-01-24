@@ -6,7 +6,7 @@ pub mod upload_image;
 
 use chrono::prelude::DateTime;
 use chrono::Utc;
-use log::{info, error};
+use log::{error, info};
 use std::time::{Duration, UNIX_EPOCH};
 
 use imgurs::api::ImageInfo;
@@ -52,7 +52,8 @@ pub fn print_image_info(i: ImageInfo, notify: bool) {
         Notification::new()
             .summary("Imgurs")
             .body(&format!("Uploaded {}", i.data.link))
-            .show().unwrap_or_else(|e| {
+            .show()
+            .unwrap_or_else(|e| {
                 error!("send notification: {}", e);
 
                 exit(2)

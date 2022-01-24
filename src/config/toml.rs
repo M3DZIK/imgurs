@@ -15,7 +15,7 @@ pub struct ConfigImgur {
 
 pub fn parse() -> Result<Config, String> {
     let config_dir = config_dir().unwrap();
-    let file_dir: String = String::from(config_dir.to_string_lossy()) + "/imgur/config.toml";
+    let file_dir: String = String::from(config_dir.to_string_lossy()) + "/imgurs/config.toml";
 
     let toml_str = read_to_string(file_dir).map_err(|err| err.to_string())?;
 

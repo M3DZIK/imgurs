@@ -96,6 +96,14 @@ jobs:
         shell: bash
         if: startsWith(github.ref, 'refs/tags/v')
 
+      - name: Get CHANGELOG.md entry
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v1
+        with:
+          version: ${{ steps.tag_name.outputs.current_version }}
+          path: ./CHANGELOG.md
+        if: startsWith(github.ref, 'refs/tags/v')
+
       - name: Publish
         uses: svenstaro/upload-release-action@v2
         with:

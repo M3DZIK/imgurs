@@ -6,7 +6,7 @@ use serde_derive::{Deserialize, Serialize};
 pub struct RateLimitInfo {
     pub data: RateLimitData,
     pub success: bool,
-    pub status: i8,
+    pub status: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

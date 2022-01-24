@@ -6,7 +6,7 @@ use toml::from_str;
 #[derive(Debug, Deserialize)]
 pub struct Config {
     pub imgur: ConfigImgur,
-    pub notification: ConfigNotification
+    pub notification: ConfigNotification,
 }
 
 #[derive(Debug, Deserialize)]

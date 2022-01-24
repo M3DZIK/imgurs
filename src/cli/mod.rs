@@ -6,12 +6,15 @@ pub mod upload_image;
 
 use chrono::prelude::DateTime;
 use chrono::Utc;
-use log::info;
+use log::{info, error};
 use std::time::{Duration, UNIX_EPOCH};
 
 use imgurs::api::ImageInfo;
 
-pub fn print_image_info(i: ImageInfo) {
+use notify_rust::Notification;
+use std::process::exit;
+
+pub fn print_image_info(i: ImageInfo, notify: bool) {
     let d = UNIX_EPOCH + Duration::from_secs(i.data.datetime.try_into().unwrap());
     let datetime = DateTime::<Utc>::from(d);
     let timestamp_str = datetime.format("%Y-%m-%d %H:%M:%S").to_string();
@@ -44,4 +47,15 @@ pub fn print_image_info(i: ImageInfo) {
     info!("Views        {}", i.data.views);
     info!("Bandwidth    {}", i.data.bandwidth);
     info!("Link         {}", i.data.link);
+
+    if notify {
+        Notification::new()
+            .summary("Imgurs")
+            .body(&format!("Uploaded {}", i.data.link))
+            .show().unwrap_or_else(|e| {
+                error!("send notification: {}", e);
+
+                exit(2)
+            });
+    }
 }

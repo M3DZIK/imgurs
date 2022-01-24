@@ -16,10 +16,7 @@ pub async fn upload_image(client: ImgurHandle, path: &str) {
     }
 
     match imgurs::api::upload_image::upload_image(client, &image).await {
-        Ok(i) => print_image_info(i),
-
-        Err(e) => {
-            error!("{e}");
-        }
+        Ok(i) => print_image_info(i, true),
+        Err(e) => error!("{e}")
     }
 }

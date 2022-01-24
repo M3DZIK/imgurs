@@ -1,6 +1,6 @@
 [package]
 name = "imgurs"
-description = "API for Imgur"
+description = "API and CLI for Imgur"
 license = "BSD-3-Clause"
 rust-version = "1.58"
 version = "0.1.0"
@@ -15,6 +15,7 @@ toml = "0.5.8"
 serde_json = "1.0.75"
 chrono = "0.4.19"
 base64 = "0.13.0"
+notify-rust = "4.5.5"
 
 [dependencies.clap]
 version = "3.0.7"

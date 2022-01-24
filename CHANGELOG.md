@@ -9,12 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### CLI
-- create default config
+- create default config, if not exits
+- when the image uploaded, send a notification
 
 ### Library
 - rustls
 
-## [0.0.1] - 2022-01-23
+## [0.1.0] - 2022-01-23
 ### CLI
 - commands
     - credits
@@ -31,5 +32,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/MedzikUser/imgurs/commits/v0.0.1
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/MedzikUser/imgurs/commits/v0.1.0

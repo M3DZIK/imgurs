@@ -17,10 +17,7 @@ pub async fn image_info(client: ImgurHandle, path: &str) {
     }
 
     match get_image(client, &image).await {
-        Ok(i) => print_image_info(i),
-
-        Err(e) => {
-            error!("{e}");
-        }
+        Ok(i) => print_image_info(i, false),
+        Err(e) => error!("{e}")
     }
 }

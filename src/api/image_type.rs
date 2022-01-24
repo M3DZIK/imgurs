@@ -3,6 +3,8 @@ use serde_derive::{Deserialize, Serialize};
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ImageInfo {
     pub data: ImageInfoData,
+    pub success: bool,
+    pub status: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

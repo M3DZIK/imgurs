@@ -50,9 +50,9 @@ pub fn print_image_info(i: ImageInfo, notify: bool) {
     info!("Bandwidth    {}", i.data.bandwidth);
     info!("Link         {}", i.data.link);
 
-    let config = parse().unwrap();
+    let config = parse();
 
-    if notify && config.notification.enable {
+    if notify && config.notification.enabled {
         Notification::new()
             .summary("Imgurs")
             .body(&format!("Uploaded {}", i.data.link))

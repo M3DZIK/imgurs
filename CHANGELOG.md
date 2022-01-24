@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - when the image uploaded, send a notification (can be turn off in config)
 
 ### Library
-- change openssl to rustls
+- change OpenSSL to RusTLS
 
 ## [0.1.0] - 2022-01-23
 ### CLI

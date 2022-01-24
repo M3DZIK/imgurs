@@ -6,7 +6,7 @@ use cli::parse::parse;
 use dirs::config_dir;
 use log::warn;
 use simple_logger::SimpleLogger;
-use std::{path::Path, fs::create_dir_all};
+use std::{fs::create_dir_all, path::Path};
 
 use std::fs::File;
 use std::io::Write as _;
@@ -31,7 +31,9 @@ async fn main() {
 
         let mut file_ref = File::create(config_path).expect("create failed");
 
-        file_ref.write_all(default_config.as_bytes()).expect("failed write default config to file");
+        file_ref
+            .write_all(default_config.as_bytes())
+            .expect("failed write default config to file");
 
         config::toml::parse().unwrap()
     });

@@ -82,7 +82,7 @@ pub async fn parse(client: ImgurHandle) {
                 "fish" => print_completions(Shell::Fish, &mut app),
                 "powershell" => print_completions(Shell::PowerShell, &mut app),
 
-                _ => error!("Completions to shell `{shell}`, not found!")
+                _ => error!("Completions to shell `{shell}`, not found!"),
             }
         }
     }

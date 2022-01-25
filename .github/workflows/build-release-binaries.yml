@@ -30,7 +30,7 @@ jobs:
             artifact_name: target/aarch64-unknown-linux-musl/release/imgurs
             release_name: aarch64-unknown-linux-musl
             cross: true
-            strip: true
+            strip: false
             compress: true
             cargo_flags: ""
 

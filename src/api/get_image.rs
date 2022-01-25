@@ -1,20 +1,19 @@
+use super::send_api_request;
 use crate::api::configuration::{api_url, ImgurHandle};
 use crate::api::ImageInfo;
 
-pub async fn get_image(c: ImgurHandle, image: &str) -> Result<ImageInfo, String> {
-    const VERSION: Option<&str> = option_env!("CARGO_PKG_VERSION");
+use log::error;
+use reqwest::Method;
+use std::process::exit;
 
-    let res = c
-        .client
-        .get(api_url!(format!("image/{image}")))
-        .header("Authorization", format!("Client-ID {}", c.client_id))
-        .header(
-            "User-Agent",
-            format!("Imgurs/{:?}", VERSION.unwrap_or("unknown")),
-        )
-        .send()
+pub async fn get_image(c: ImgurHandle, image: &str) -> Result<ImageInfo, String> {
+    let uri = api_url!(format!("image/{image}"));
+    let res = send_api_request(&c, Method::GET, uri, None)
         .await
-        .map_err(|err| err.to_string())?;
+        .unwrap_or_else(|e| {
+            error!("send api request: {e}");
+            exit(1)
+        });
 
     let status = res.status();
 
@@ -23,7 +22,7 @@ pub async fn get_image(c: ImgurHandle, image: &str) -> Result<ImageInfo, String>
             "server returned non-successful status code = {status}."
         ))
     } else {
-        let content: ImageInfo = res.json().await.map_err(|err| err.to_string())?;
+        let content: ImageInfo = res.json().await.map_err(|e| e.to_string())?;
         Ok(content)
     }
 }

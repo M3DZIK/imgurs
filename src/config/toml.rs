@@ -12,8 +12,8 @@ use std::{
 };
 
 pub fn parse() -> Config {
-    toml().unwrap_or_else(|error| {
-        warn!("Parse toml config: {}! Creating config file...", error);
+    toml().unwrap_or_else(|e| {
+        warn!("Parse toml config: {e}! Creating config file...");
 
         let default_config = include_str!(concat!("../../config.toml"));
 
@@ -30,8 +30,8 @@ pub fn parse() -> Config {
             .write_all(default_config.as_bytes())
             .expect("failed write default config to file");
 
-        toml().unwrap_or_else(|error| {
-            error!("parse toml config: {}", error);
+        toml().unwrap_or_else(|e| {
+            error!("parse toml config: {e}");
             exit(2);
         })
     })

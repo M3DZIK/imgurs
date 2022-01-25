@@ -1,6 +1,10 @@
+use super::send_api_request;
 use crate::api::configuration::{api_url, ImgurHandle};
 
+use log::error;
+use reqwest::Method;
 use serde_derive::{Deserialize, Serialize};
+use std::process::exit;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RateLimitInfo {
@@ -24,29 +28,23 @@ pub struct RateLimitData {
 }
 
 pub async fn rate_limit(c: ImgurHandle) -> Result<RateLimitInfo, String> {
-    const VERSION: Option<&str> = option_env!("CARGO_PKG_VERSION");
-
-    let res = c
-        .client
-        .get(api_url!("credits"))
-        .header("Authorization", format!("Client-ID {}", c.client_id))
-        .header(
-            "User-Agent",
-            format!("Imgur/{:?}", VERSION.unwrap_or("unknown")),
-        )
-        .send()
+    let uri = api_url!("credits");
+    let res = send_api_request(&c, Method::GET, uri, None)
         .await
-        .map_err(|err| err.to_string())?;
+        .unwrap_or_else(|e| {
+            error!("send api request: {e}");
+            exit(1)
+        });
 
     let status = res.status();
 
     if status.is_client_error() || status.is_server_error() {
-        let body = res.text().await.map_err(|err| err.to_string())?;
+        let body = res.text().await.map_err(|e| e.to_string())?;
         Err(format!(
             "server returned non-successful status code = {status}. body = {body}"
         ))
     } else {
-        let content: RateLimitInfo = res.json().await.map_err(|err| err.to_string())?;
+        let content: RateLimitInfo = res.json().await.map_err(|e| e.to_string())?;
         Ok(content)
     }
 }

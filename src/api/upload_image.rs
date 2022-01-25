@@ -1,37 +1,37 @@
-use crate::api::configuration::{api_url, ImgurHandle};
-use crate::api::ImageInfo;
+use super::send_api_request;
+use crate::api::{
+    configuration::{api_url, ImgurHandle},
+    ImageInfo,
+};
 
-use std::collections::HashMap;
+use log::error;
+use reqwest::Method;
+use std::{collections::HashMap, process::exit};
 
 pub async fn upload_image(c: ImgurHandle, image: &str) -> Result<ImageInfo, String> {
-    const VERSION: Option<&str> = option_env!("CARGO_PKG_VERSION");
-
     let mut form = HashMap::new();
 
     form.insert("image", image.to_string());
 
-    let res = c
-        .client
-        .post(api_url!("image"))
-        .header("Authorization", format!("Client-ID {}", c.client_id))
-        .header(
-            "User-Agent",
-            format!("Imgurs/{:?}", VERSION.unwrap_or("unknown")),
-        )
-        .form(&form)
-        .send()
+    let uri = api_url!("image");
+    let res = send_api_request(&c, Method::POST, uri, Some(form))
         .await
-        .map_err(|err| err.to_string())?;
+        .unwrap_or_else(|e| {
+            error!("send api request: {e}");
+            exit(1)
+        });
 
     let status = res.status();
 
     if status.is_client_error() || status.is_server_error() {
-        let body = res.text().await.map_err(|err| err.to_string())?;
+        let body = res.text().await.map_err(|e| e.to_string())?;
+
         Err(format!(
             "server returned non-successful status code = {status}. body = {body}"
         ))
     } else {
-        let content: ImageInfo = res.json().await.map_err(|err| err.to_string())?;
+        let content: ImageInfo = res.json().await.map_err(|e| e.to_string())?;
+
         Ok(content)
     }
 }

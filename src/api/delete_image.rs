@@ -1,19 +1,18 @@
+use super::send_api_request;
 use crate::api::configuration::{api_url, ImgurHandle};
 
-pub async fn delete_image(c: ImgurHandle, delete_hash: String) -> Result<String, String> {
-    const VERSION: Option<&str> = option_env!("CARGO_PKG_VERSION");
+use log::error;
+use reqwest::Method;
+use std::process::exit;
 
-    let res = c
-        .client
-        .delete(api_url!(format!("image/{delete_hash}")))
-        .header("Authorization", format!("Client-ID {}", c.client_id))
-        .header(
-            "User-Agent",
-            format!("Imgur/{:?}", VERSION.unwrap_or("unknown")),
-        )
-        .send()
+pub async fn delete_image(c: ImgurHandle, delete_hash: String) -> Result<String, String> {
+    let uri = api_url!(format!("image/{delete_hash}"));
+    let res = send_api_request(&c, Method::DELETE, uri, None)
         .await
-        .map_err(|err| err.to_string())?;
+        .unwrap_or_else(|e| {
+            error!("send api request: {e}");
+            exit(1)
+        });
 
     let status = res.status();
 

@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 #### Library
 - change OpenSSL to RusTLS
+- move api request to fn send_api_request
 
 ### Fixed
 * api rate limit (error decoding response body: invalid value: integer \`200\`, expected i8 at line 1 column 140)

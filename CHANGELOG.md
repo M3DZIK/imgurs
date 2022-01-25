@@ -8,11 +8,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+
+## [0.2.0] - 2022-01-23
 ### Added
 #### CLI
 - create default config, if not exits
 - when the image uploaded, send a notification (can be turn off in config)
-- added completions
+- shell completions
 
 #### Library
 - change OpenSSL to RusTLS
@@ -38,5 +40,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/MedzikUser/imgurs/commits/v0.2.0
 [0.1.0]: https://github.com/MedzikUser/imgurs/commits/v0.1.0

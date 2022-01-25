@@ -6,7 +6,10 @@ pub mod upload_image;
 
 use chrono::{prelude::DateTime, Utc};
 use log::{error, info};
-use std::{time::{Duration, UNIX_EPOCH}, process::exit};
+use std::{
+    process::exit,
+    time::{Duration, UNIX_EPOCH},
+};
 
 use imgurs::api::ImageInfo;
 

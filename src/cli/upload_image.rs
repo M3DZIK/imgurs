@@ -3,7 +3,7 @@ use imgurs::api::{configuration::ImgurHandle, upload_image::upload_image as uplo
 
 use base64::encode as base64_encode;
 use log::error;
-use std::{fs::read as fs_read, process::exit, path::Path};
+use std::{fs::read as fs_read, path::Path, process::exit};
 
 pub async fn upload_image(client: ImgurHandle, path: &str) {
     let mut image: String = path.to_string();
@@ -14,7 +14,7 @@ pub async fn upload_image(client: ImgurHandle, path: &str) {
         image = base64_encode(bytes);
     }
 
-     let i = upload_img(client, &image).await.unwrap_or_else(|e| {
+    let i = upload_img(client, &image).await.unwrap_or_else(|e| {
         error!("{e}");
         exit(1);
     });

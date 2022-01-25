@@ -1,5 +1,5 @@
-use clap::{AppSettings, Parser, Subcommand, App, IntoApp};
-use clap_complete::{generate, Shell, Generator};
+use clap::{App, AppSettings, IntoApp, Parser, Subcommand};
+use clap_complete::{generate, Generator, Shell};
 use log::error;
 
 use std::io::stdout;
@@ -42,10 +42,11 @@ enum Commands {
     #[clap(setting(AppSettings::ArgRequiredElseHelp), about = "Print image info")]
     Info { id: String },
 
-    #[clap(setting(AppSettings::ArgRequiredElseHelp), about = "Print shell completions (bash, zsh, fish, powershell)")]
-    Completions {
-        shell: String,
-    },
+    #[clap(
+        setting(AppSettings::ArgRequiredElseHelp),
+        about = "Print shell completions (bash, zsh, fish, powershell)"
+    )]
+    Completions { shell: String },
 }
 
 fn print_completions<G: Generator>(gen: G, app: &mut App) {

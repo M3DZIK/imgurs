@@ -76,16 +76,13 @@ pub async fn parse(client: ImgurHandle) {
         Commands::Completions { shell } => {
             let mut app = Cli::into_app();
 
-            if shell == "bash" {
-                print_completions(Shell::Bash, &mut app);
-            } else if shell == "zsh" {
-                print_completions(Shell::Zsh, &mut app);
-            } else if shell == "fish" {
-                print_completions(Shell::Fish, &mut app);
-            } else if shell == "powershell" {
-                print_completions(Shell::PowerShell, &mut app);
-            } else {
-                error!("Completions to shell `{shell}`, not found!")
+            match shell.as_str() {
+                "bash" => print_completions(Shell::Bash, &mut app),
+                "zsh" => print_completions(Shell::Zsh, &mut app),
+                "fish" => print_completions(Shell::Fish, &mut app),
+                "powershell" => print_completions(Shell::PowerShell, &mut app),
+
+                _ => error!("Completions to shell `{shell}`, not found!")
             }
         }
     }

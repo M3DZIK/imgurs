@@ -1,16 +1,13 @@
-use imgurs::api;
-use imgurs::api::configuration::ImgurHandle;
+use imgurs::api::{configuration::ImgurHandle, delete_image::delete_image as del_img};
 
 use log::{error, info};
+use std::process::exit;
 
 pub async fn delete_image(client: ImgurHandle, delete_hash: String) {
-    match api::delete_image::delete_image(client, delete_hash).await {
-        Ok(i) => {
-            info!("{i}")
-        }
+    let i = del_img(client, delete_hash).await.unwrap_or_else(|e| {
+        error!("{e}");
+        exit(1);
+    });
 
-        Err(e) => {
-            error!("{}", e);
-        }
-    }
+    info!("{i}");
 }

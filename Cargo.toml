@@ -16,10 +16,11 @@ serde_json = "1.0.75"
 chrono = "0.4.19"
 base64 = "0.13.0"
 notify-rust = "4.5.5"
+clap_complete = "3.0.5"
 
 [dependencies.clap]
 version = "3.0.7"
-features = ["derive", "cargo", "unicode"]
+features = ["derive", "cargo", "std"]
 
 [dependencies.log]
 version = "0.4.14"

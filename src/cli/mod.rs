@@ -4,15 +4,13 @@ pub mod info_image;
 pub mod parse;
 pub mod upload_image;
 
-use chrono::prelude::DateTime;
-use chrono::Utc;
+use chrono::{prelude::DateTime, Utc};
 use log::{error, info};
-use std::time::{Duration, UNIX_EPOCH};
+use std::{time::{Duration, UNIX_EPOCH}, process::exit};
 
 use imgurs::api::ImageInfo;
 
 use notify_rust::Notification;
-use std::process::exit;
 
 use crate::config::toml::parse;
 

@@ -8,12 +8,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
-### CLI
+### Added
+#### CLI
 - create default config, if not exits
 - when the image uploaded, send a notification (can be turn off in config)
+- added completions
 
-### Library
+#### Library
 - change OpenSSL to RusTLS
+
+### Fixed
+* api rate limit (error decoding response body: invalid value: integer \`200\`, expected i8 at line 1 column 140)
 
 ## [0.1.0] - 2022-01-23
 ### CLI

@@ -1,28 +1,26 @@
-use imgurs::api::rate_limit::*;
-use imgurs::api::ImgurHandle;
+use imgurs::api::{rate_limit::rate_limit, ImgurHandle};
 
 use log::{error, info};
 
-use chrono::prelude::DateTime;
-use chrono::Utc;
-use std::time::{Duration, UNIX_EPOCH};
+use chrono::{prelude::DateTime, Utc};
+use std::{
+    process::exit,
+    time::{Duration, UNIX_EPOCH},
+};
 
 pub async fn credits(client: ImgurHandle) {
-    match rate_limit(client).await {
-        Ok(i) => {
-            let d = UNIX_EPOCH + Duration::from_secs(i.data.user_reset.try_into().unwrap());
-            let datetime = DateTime::<Utc>::from(d);
-            let timestamp_str = datetime.format("%Y-%m-%d %H:%M:%S").to_string();
+    let i = rate_limit(client).await.unwrap_or_else(|e| {
+        error!("{e}");
+        exit(1);
+    });
 
-            info!("User Limit         {}", i.data.user_limit);
-            info!("User Remaining     {}", i.data.user_remaining);
-            info!("User Reset         {} (UTC)", timestamp_str);
-            info!("Client Limit       {}", i.data.client_limit);
-            info!("Client Remaining   {}", i.data.client_remaining);
-        }
+    let d = UNIX_EPOCH + Duration::from_secs(i.data.user_reset.try_into().unwrap());
+    let datetime = DateTime::<Utc>::from(d);
+    let timestamp_str = datetime.format("%Y-%m-%d %H:%M:%S").to_string();
 
-        Err(e) => {
-            error!("{}", e);
-        }
-    }
+    info!("User Limit         {}", i.data.user_limit);
+    info!("User Remaining     {}", i.data.user_remaining);
+    info!("User Reset         {} (UTC)", timestamp_str);
+    info!("Client Limit       {}", i.data.client_limit);
+    info!("Client Remaining   {}", i.data.client_remaining);
 }

@@ -2,22 +2,14 @@ use imgurs::api::{configuration::ImgurHandle, get_image::get_image};
 
 use super::print_image_info;
 
-use base64;
 use log::error;
-use std::fs;
-use std::path::Path;
+use std::process::exit;
 
-pub async fn image_info(client: ImgurHandle, path: &str) {
-    let mut image: String = path.to_string();
+pub async fn image_info(client: ImgurHandle, id: &str) {
+    let i = get_image(client, id).await.unwrap_or_else(|e| {
+        error!("{e}");
+        exit(1);
+    });
 
-    if Path::new(path).exists() {
-        let bytes = fs::read(path).map_err(|err| err.to_string()).unwrap();
-
-        image = base64::encode(bytes);
-    }
-
-    match get_image(client, &image).await {
-        Ok(i) => print_image_info(i, false),
-        Err(e) => error!("{e}"),
-    }
+    print_image_info(i, false);
 }

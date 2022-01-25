@@ -6,6 +6,8 @@ rust-version = "1.58"
 version = "0.2.0"
 edition = "2021"
 authors = ["MedzikUser <nivua1fn@duck.com>"]
+homepage = "https://github.com/MedzikUser/imgurs"
+repository = "https://github.com/MedzikUser/imgurs.git"
 
 [dependencies]
 dirs = "4.0.0"

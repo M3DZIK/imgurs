@@ -1,15 +1,14 @@
-use dirs::config_dir;
-use toml::from_str;
-
 use super::Config;
-use log::{error, warn};
 
+use dirs::config_dir;
+use log::{error, warn};
 use std::{
     fs::{create_dir_all, read_to_string, File},
     io::Write as _,
     path::Path,
     process::exit,
 };
+use toml::from_str;
 
 pub fn parse() -> Config {
     toml().unwrap_or_else(|e| {

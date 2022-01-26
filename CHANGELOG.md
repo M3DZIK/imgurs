@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+- SimpleLogger init error handling
 
 ## [0.2.0] - 2022-01-23
 ### Added

@@ -1,6 +1,7 @@
-use super::send_api_request;
 use crate::api::configuration::{api_url, ImgurHandle};
 use crate::api::ImageInfo;
+
+use super::send_api_request;
 
 use log::error;
 use reqwest::Method;

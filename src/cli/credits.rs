@@ -1,8 +1,7 @@
 use imgurs::api::{rate_limit::rate_limit, ImgurHandle};
 
-use log::{error, info};
-
 use chrono::{prelude::DateTime, Utc};
+use log::{error, info};
 use std::{
     process::exit,
     time::{Duration, UNIX_EPOCH},

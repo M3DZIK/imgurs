@@ -4,18 +4,16 @@ pub mod info_image;
 pub mod parse;
 pub mod upload_image;
 
+use crate::config::toml::parse;
+use imgurs::api::ImageInfo;
+
 use chrono::{prelude::DateTime, Utc};
 use log::{error, info};
+use notify_rust::Notification;
 use std::{
     process::exit,
     time::{Duration, UNIX_EPOCH},
 };
-
-use imgurs::api::ImageInfo;
-
-use notify_rust::Notification;
-
-use crate::config::toml::parse;
 
 pub fn print_image_info(i: ImageInfo, notify: bool) {
     let d = UNIX_EPOCH + Duration::from_secs(i.data.datetime.try_into().unwrap());

@@ -1,5 +1,6 @@
-use super::print_image_info;
 use imgurs::api::{configuration::ImgurHandle, upload_image::upload_image as upload_img};
+
+use super::print_image_info;
 
 use base64::encode as base64_encode;
 use log::error;

@@ -1,6 +1,11 @@
 name: Build release binaries (and publish them if this is a tag)
 
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore:
+      - '*.md'
+
+  pull_request:
 
 jobs:
   binaries:

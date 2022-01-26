@@ -1,6 +1,6 @@
-use reqwest::Method;
-
 use super::ImgurHandle;
+
+use reqwest::Method;
 use std::collections::HashMap;
 
 pub async fn send_api_request(

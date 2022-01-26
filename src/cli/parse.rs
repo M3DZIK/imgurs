@@ -1,10 +1,9 @@
+use imgurs::api::configuration::ImgurHandle;
+
 use clap::{App, AppSettings, IntoApp, Parser, Subcommand};
 use clap_complete::{generate, Generator, Shell};
 use log::error;
-
 use std::io::stdout;
-
-use imgurs::api::configuration::ImgurHandle;
 
 use crate::cli::{credits::*, delete_image::*, info_image::*, upload_image::*};
 

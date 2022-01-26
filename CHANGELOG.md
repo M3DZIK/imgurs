@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 - SimpleLogger init error handling
 
+### Library
+- The returned error in the Result is from now on anyhow::Error and not String.
+
 ## [0.2.0] - 2022-01-23
 ### Added
 #### CLI

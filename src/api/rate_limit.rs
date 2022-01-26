@@ -2,10 +2,10 @@ use crate::api::configuration::{api_url, ImgurHandle};
 
 use super::send_api_request;
 
-use log::error;
+use anyhow::Error as anyhow_err;
 use reqwest::Method;
 use serde_derive::{Deserialize, Serialize};
-use std::process::exit;
+use std::io::{Error, ErrorKind};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RateLimitInfo {
@@ -28,24 +28,22 @@ pub struct RateLimitData {
     pub client_remaining: i32,
 }
 
-pub async fn rate_limit(c: ImgurHandle) -> Result<RateLimitInfo, String> {
+pub async fn rate_limit(c: ImgurHandle) -> Result<RateLimitInfo, anyhow_err> {
     let uri = api_url!("credits");
-    let res = send_api_request(&c, Method::GET, uri, None)
-        .await
-        .unwrap_or_else(|e| {
-            error!("send api request: {e}");
-            exit(1)
-        });
+    let res = send_api_request(&c, Method::GET, uri, None).await?;
 
     let status = res.status();
 
     if status.is_client_error() || status.is_server_error() {
-        let body = res.text().await.map_err(|e| e.to_string())?;
-        Err(format!(
-            "server returned non-successful status code = {status}. body = {body}"
-        ))
+        let body = res.text().await.map_err(anyhow_err::new)?;
+        let err = Error::new(
+            ErrorKind::Other,
+            format!("server returned non-successful status code = {status}, body = {body}"),
+        );
+
+        Err(anyhow_err::from(err))
     } else {
-        let content: RateLimitInfo = res.json().await.map_err(|e| e.to_string())?;
+        let content: RateLimitInfo = res.json().await.map_err(anyhow_err::new)?;
         Ok(content)
     }
 }

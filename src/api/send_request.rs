@@ -1,5 +1,6 @@
 use super::ImgurHandle;
 
+use anyhow::Error;
 use reqwest::Method;
 use std::collections::HashMap;
 
@@ -8,7 +9,7 @@ pub async fn send_api_request(
     method: Method,
     uri: String,
     form: Option<HashMap<&str, String>>,
-) -> Result<reqwest::Response, reqwest::Error> {
+) -> Result<reqwest::Response, Error> {
     let client = &config.client;
 
     let mut req = client.request(method, uri.as_str());
@@ -28,5 +29,5 @@ pub async fn send_api_request(
 
     let req = req.build()?;
 
-    client.execute(req).await
+    client.execute(req).await.map_err(Error::from)
 }

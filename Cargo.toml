@@ -19,6 +19,7 @@ chrono = "0.4.19"
 base64 = "0.13.0"
 notify-rust = "4.5.5"
 clap_complete = "3.0.5"
+anyhow = "1.0.53"
 
 [dependencies.clap]
 version = "3.0.7"

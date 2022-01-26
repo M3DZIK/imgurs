@@ -11,7 +11,7 @@
 Here are some examples of usage
 ```bash
 # For bash
-imgurs completionsbash > ~/.local/share/bash-completion/completions/imgurs
+imgurs completions bash > ~/.local/share/bash-completion/completions/imgurs
 # For zsh
 imgurs completions zsh > /usr/local/share/zsh/site-functions/_imgurs
 # For fish

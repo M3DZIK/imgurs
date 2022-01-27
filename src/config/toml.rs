@@ -44,9 +44,9 @@ fn toml() -> Result<Config, Error> {
 
     let file_dir: String = String::from(config_dir.to_string_lossy()) + CONFIG_DIR;
 
-    let toml_str = read_to_string(file_dir).map_err(|e| e)?;
+    let toml_str = read_to_string(file_dir).map_err(Error::new)?;
 
-    let decode = from_str(&toml_str).map_err(|e| e)?;
+    let decode = from_str(&toml_str).map_err(Error::new)?;
 
     Ok(decode)
 }

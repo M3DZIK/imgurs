@@ -10,8 +10,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 - SimpleLogger init error handling
 
+### CLI
+- better panic
+- panic instead of send log error
+
 ### Library
 - The returned error in the Result is from now on anyhow::Error and not String.
+- Do not exit program if send_api_request error
+- rename ImgurHandle -> ImgurClient
 
 ## [0.2.0] - 2022-01-23
 ### Added

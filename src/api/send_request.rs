@@ -1,11 +1,11 @@
-use super::ImgurHandle;
+use super::ImgurClient;
 
 use anyhow::Error;
 use reqwest::Method;
 use std::collections::HashMap;
 
 pub async fn send_api_request(
-    config: &ImgurHandle,
+    config: &ImgurClient,
     method: Method,
     uri: String,
     form: Option<HashMap<&str, String>>,

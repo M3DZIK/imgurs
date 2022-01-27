@@ -2,22 +2,18 @@ mod cli;
 mod config;
 
 use cli::parse::parse;
-use imgurs::api::ImgurHandle;
+use imgurs::api::ImgurClient;
 
-use log::error;
 use simple_logger::SimpleLogger;
-use std::process::exit;
 
 #[tokio::main]
 async fn main() {
-    SimpleLogger::new().init().unwrap_or_else(|e| {
-        error!("init simple logger: {e}");
-        exit(2)
-    });
+    SimpleLogger::new().init().expect("init SimpleLogger");
+    better_panic::install();
 
     let config = config::toml::parse();
 
-    let client = ImgurHandle::new((&config.imgur.id).to_string());
+    let client = ImgurClient::new((&config.imgur.id).to_string());
 
     parse(client).await
 }

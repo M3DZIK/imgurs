@@ -1,4 +1,4 @@
-use crate::api::configuration::{api_url, ImgurHandle};
+use crate::api::configuration::{api_url, ImgurClient};
 
 use super::send_api_request;
 
@@ -28,7 +28,7 @@ pub struct RateLimitData {
     pub client_remaining: i32,
 }
 
-pub async fn rate_limit(c: ImgurHandle) -> Result<RateLimitInfo, anyhow_err> {
+pub async fn rate_limit(c: ImgurClient) -> Result<RateLimitInfo, anyhow_err> {
     let uri = api_url!("credits");
     let res = send_api_request(&c, Method::GET, uri, None).await?;
 

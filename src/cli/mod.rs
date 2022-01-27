@@ -8,12 +8,9 @@ use crate::config::toml::parse;
 use imgurs::api::ImageInfo;
 
 use chrono::{prelude::DateTime, Utc};
-use log::{error, info};
+use log::info;
 use notify_rust::Notification;
-use std::{
-    process::exit,
-    time::{Duration, UNIX_EPOCH},
-};
+use std::time::{Duration, UNIX_EPOCH};
 
 pub fn print_image_info(i: ImageInfo, notify: bool) {
     let d = UNIX_EPOCH + Duration::from_secs(i.data.datetime.try_into().unwrap());
@@ -56,10 +53,6 @@ pub fn print_image_info(i: ImageInfo, notify: bool) {
             .summary("Imgurs")
             .body(&format!("Uploaded {}", i.data.link))
             .show()
-            .unwrap_or_else(|e| {
-                error!("send notification: {}", e);
-
-                exit(2)
-            });
+            .expect("send notification");
     }
 }

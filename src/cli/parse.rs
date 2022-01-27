@@ -1,4 +1,4 @@
-use imgurs::api::configuration::ImgurHandle;
+use imgurs::api::ImgurClient;
 
 use clap::{App, AppSettings, IntoApp, Parser, Subcommand};
 use clap_complete::{generate, Generator, Shell};
@@ -52,7 +52,7 @@ fn print_completions<G: Generator>(gen: G, app: &mut App) {
     generate(gen, app, app.get_name().to_string(), &mut stdout())
 }
 
-pub async fn parse(client: ImgurHandle) {
+pub async fn parse(client: ImgurClient) {
     let args = Cli::parse();
 
     match &args.command {

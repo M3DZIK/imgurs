@@ -1,5 +1,5 @@
 use crate::api::{
-    configuration::{api_url, ImgurHandle},
+    configuration::{api_url, ImgurClient},
     ImageInfo,
 };
 
@@ -12,7 +12,7 @@ use std::{
     io::{Error, ErrorKind},
 };
 
-pub async fn upload_image(c: ImgurHandle, image: &str) -> Result<ImageInfo, anyhow_err> {
+pub async fn upload_image(c: ImgurClient, image: &str) -> Result<ImageInfo, anyhow_err> {
     let mut form = HashMap::new();
 
     form.insert("image", image.to_string());

@@ -8,11 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
-- SimpleLogger init error handling
-
 ### CLI
+- SimpleLogger init error handling
 - better panic
 - panic instead of send log error
+- add url validate
 
 ### Library
 - The returned error in the Result is from now on anyhow::Error and not String.
@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - move api request to fn send_api_request
 
 ### Fixed
-* api rate limit (error decoding response body: invalid value: integer \`200\`, expected i8 at line 1 column 140)
+- api rate limit (error decoding response body: invalid value: integer \`200\`, expected i8 at line 1 column 140)
 
 ## [0.1.0] - 2022-01-23
 ### CLI

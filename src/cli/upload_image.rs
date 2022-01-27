@@ -13,6 +13,8 @@ pub async fn upload_image(client: ImgurClient, path: &str) {
             .map_err(|err| err.to_string())
             .expect("read file");
         image = base64_encode(bytes);
+    } else if !validator::validate_url(path) {
+        panic!("{path} is not a url")
     }
 
     let i = upload_img(client, &image).await.expect("send api request");

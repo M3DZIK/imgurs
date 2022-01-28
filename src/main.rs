@@ -12,7 +12,6 @@ async fn main() {
     better_panic::install();
 
     let config = config::toml::parse();
-
     let client = ImgurClient::new((&config.imgur.id).to_string());
 
     parse(client).await

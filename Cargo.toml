@@ -51,7 +51,7 @@ default-features = false
 features = ["json", "rustls-tls"]
 
 [dependencies.tokio]
-version = "1.15.0"
-features = ["full"]
+version = "1.16.1"
+features = ["macros", "rt-multi-thread"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

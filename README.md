@@ -27,6 +27,10 @@ Download imgurs-linux from [the releases page](https://github.com/MedzikUser/img
     ./imgurs-linux
 
 #### **Arch Linux**
+Using yay ([AUR](https://aur.archlinux.org/packages/imgurs))
+
+    yay -S imgurs
+
 If you are using arch linux you can add [this repo](https://github.com/archlinux-pkg/packages) and run
 
     sudo pacman -Sy imgurs

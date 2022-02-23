@@ -7,11 +7,11 @@ pub mod upload_image;
 use crate::config::toml::parse;
 use imgurs::api::ImageInfo;
 
+use arboard::Clipboard;
 use chrono::{prelude::DateTime, Utc};
 use log::info;
 use notify_rust::Notification;
 use std::time::{Duration, UNIX_EPOCH};
-use arboard::Clipboard;
 
 pub fn print_image_info(i: ImageInfo, notify: bool) {
     let d = UNIX_EPOCH + Duration::from_secs(i.data.datetime.try_into().unwrap());

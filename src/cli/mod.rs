@@ -11,6 +11,7 @@ use chrono::{prelude::DateTime, Utc};
 use log::info;
 use notify_rust::Notification;
 use std::time::{Duration, UNIX_EPOCH};
+use arboard::Clipboard;
 
 pub fn print_image_info(i: ImageInfo, notify: bool) {
     let d = UNIX_EPOCH + Duration::from_secs(i.data.datetime.try_into().unwrap());
@@ -54,5 +55,8 @@ pub fn print_image_info(i: ImageInfo, notify: bool) {
             .body(&format!("Uploaded {}", i.data.link))
             .show()
             .expect("send notification");
+
+        let mut clipboard = Clipboard::new().unwrap();
+        clipboard.set_text(i.data.link.into()).unwrap();
     }
 }

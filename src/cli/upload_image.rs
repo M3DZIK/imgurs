@@ -1,9 +1,21 @@
+use super::clipboard::set_clipboard;
 use imgurs::api::{upload_image::upload_image as upload_img, ImgurClient};
+use notify_rust::Notification;
+
+use crate::config::toml::parse as parse_config;
 
 use super::print_image_info;
 
 use base64::encode as base64_encode;
 use std::{fs::read as fs_read, path::Path};
+
+macro_rules! notify (
+    ($notification: expr) => (
+        if parse_config().notification.enabled {
+            $notification.show().expect("send notification");
+        }
+    );
+);
 
 pub async fn upload_image(client: ImgurClient, path: &str) {
     let mut image: String = path.to_string();
@@ -18,5 +30,13 @@ pub async fn upload_image(client: ImgurClient, path: &str) {
     }
 
     let i = upload_img(client, &image).await.expect("send api request");
-    print_image_info(i, true);
+    print_image_info(i.clone());
+
+    let body = format!("Uploaded {}", i.data.link);
+
+    notify!(Notification::new().summary("Imgurs").body(&body));
+
+    if parse_config().clipboard.enabled {
+        set_clipboard(i.data.link)
+    }
 }

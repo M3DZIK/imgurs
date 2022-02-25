@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
     paths-ignore:
       - '*.md'
 
@@ -16,9 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Setup GIT
+      - name: Setup Git
         run: |
           git config --global user.name "MedzikUserBot"
           git config --global user.email "rm99iv9s@duck.com"
@@ -43,7 +43,7 @@ jobs:
           git diff-index --quiet HEAD || git commit -m "rustfmt"
 
       - name: Push changes
-        uses: ad-m/github-push-action@a3fd843e49cd58d296bdd2431c4853569a1b900f
+        uses: ad-m/github-push-action@b007e7b818e33b04afd056e4c4b57ba917145d7a
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: 'main'

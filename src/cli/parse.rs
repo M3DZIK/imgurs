@@ -1,6 +1,6 @@
 use imgurs::api::ImgurClient;
 
-use clap::{App, AppSettings, IntoApp, Parser, Subcommand};
+use clap::{Command, IntoApp, Parser, Subcommand};
 use clap_complete::{generate, Generator, Shell};
 use log::error;
 use std::io::stdout;
@@ -26,29 +26,20 @@ enum Commands {
     #[clap(about = "Print API Rate Limit")]
     Credits,
 
-    #[clap(
-        setting(AppSettings::ArgRequiredElseHelp),
-        about = "Upload image to Imgur"
-    )]
+    #[clap(about = "Upload image to Imgur")]
     Upload { path: String },
 
-    #[clap(
-        setting(AppSettings::ArgRequiredElseHelp),
-        about = "Delete image from Imgur"
-    )]
+    #[clap(about = "Delete image from Imgur")]
     Delete { delete_hash: String },
 
-    #[clap(setting(AppSettings::ArgRequiredElseHelp), about = "Print image info")]
+    #[clap(about = "Print image info")]
     Info { id: String },
 
-    #[clap(
-        setting(AppSettings::ArgRequiredElseHelp),
-        about = "Print shell completions (bash, zsh, fish, powershell)"
-    )]
+    #[clap(about = "Print shell completions (bash, zsh, fish, powershell)")]
     Completions { shell: String },
 }
 
-fn print_completions<G: Generator>(gen: G, app: &mut App) {
+fn print_completions<G: Generator>(gen: G, app: &mut Command) {
     generate(gen, app, app.get_name().to_string(), &mut stdout())
 }
 
@@ -73,7 +64,7 @@ pub async fn parse(client: ImgurClient) {
         }
 
         Commands::Completions { shell } => {
-            let mut app = Cli::into_app();
+            let mut app = Cli::command();
 
             match shell.as_str() {
                 "bash" => print_completions(Shell::Bash, &mut app),

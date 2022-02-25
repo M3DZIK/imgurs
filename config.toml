@@ -3,3 +3,6 @@ id = '3e3ce0d7ac14d56'
 
 [notification]
 enabled = true
+
+[clipboard]
+enabled = true

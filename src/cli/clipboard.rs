@@ -3,7 +3,10 @@
     not(any(target_os = "macos", target_os = "android", target_os = "emscripten"))
 ))]
 pub fn set_clipboard(content: String) {
-    use std::{process::{Command, Stdio}, io::Write};
+    use std::{
+        io::Write,
+        process::{Command, Stdio},
+    };
 
     let mut child = Command::new("xsel")
         .arg("--input")
@@ -12,7 +15,12 @@ pub fn set_clipboard(content: String) {
         .spawn()
         .expect("execute command xsel");
 
-    child.stdin.as_mut().unwrap().write_all(content.as_bytes()).expect("execute command");
+    child
+        .stdin
+        .as_mut()
+        .unwrap()
+        .write_all(content.as_bytes())
+        .expect("execute command");
     child.wait_with_output().unwrap();
 }
 

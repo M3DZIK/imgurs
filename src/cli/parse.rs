@@ -2,7 +2,6 @@ use imgurs::api::ImgurClient;
 
 use clap::{Command, IntoApp, Parser, Subcommand};
 use clap_complete::{generate, Generator, Shell};
-use log::error;
 use std::io::stdout;
 
 use crate::cli::{credits::*, delete_image::*, info_image::*, upload_image::*};
@@ -72,7 +71,7 @@ pub async fn parse(client: ImgurClient) {
                 "fish" => print_completions(Shell::Fish, &mut app),
                 "powershell" => print_completions(Shell::PowerShell, &mut app),
 
-                _ => error!("Completions to shell `{shell}`, not found!"),
+                _ => panic!("Completions to shell `{shell}`, not found!"),
             }
         }
     }

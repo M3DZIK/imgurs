@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+### CLI
+- update logger
+- added clipboard
 
 ## [0.3.0] - 2022-01-28
 ### CLI

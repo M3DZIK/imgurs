@@ -2,9 +2,9 @@
 
 ## Screenshots
 
-![upload](https://cdn.magicuser.cf/tcqqxEh.png)
+![upload](https://cdn.magicuser.cf/7eMaL5d.png)
 
-![delete](https://cdn.magicuser.cf/hBqbsIm.png)
+![delete](https://cdn.magicuser.cf/TSxBrhO.png)
 
 ## Shell completions
 
@@ -17,6 +17,10 @@ imgurs completions zsh > /usr/local/share/zsh/site-functions/_imgurs
 # For fish
 imgurs completions fish > ~/.config/fish/completions/imgurs.fish
 ```
+
+## Dependencies
+- **xsel** - support clipboard on Linux
+- **libnotify** - support notification on Linux
 
 ## How to install Imgurs CLI?
 

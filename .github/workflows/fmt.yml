@@ -18,11 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Git
-        run: |
-          git config --global user.name "MedzikUserBot"
-          git config --global user.email "rm99iv9s@duck.com"
-
       - name: Setup Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
@@ -31,19 +26,8 @@ jobs:
           override: true
           components: rustfmt, clippy
 
-      - name: cargo fmt
+      - name: Check cargo fmt
         uses: actions-rs/cargo@v1
         with:
           command: fmt
-          args: --all
-
-      - name: Commit changes
-        run: |
-          git add .
-          git diff-index --quiet HEAD || git commit -m "rustfmt"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@b007e7b818e33b04afd056e4c4b57ba917145d7a
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'main'
+          args: --all --check

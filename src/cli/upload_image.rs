@@ -29,7 +29,13 @@ pub async fn upload_image(client: ImgurClient, path: &str) {
         panic!("{path} is not a url")
     }
 
-    let i = upload_img(client, &image).await.expect("send api request");
+    let i = upload_img(client, &image).await.unwrap_or_else(|err| {
+        notify!(Notification::new()
+            .summary("Error!")
+            .body(&format!("Error: {}", &err.to_string()))
+            .appname("Imgurs")); // I don't think you can set it to error
+        panic!("{}", err)
+    });
     print_image_info(i.clone());
 
     let body = format!("Uploaded {}", i.data.link);

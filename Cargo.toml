@@ -58,5 +58,3 @@ features = ["json", "rustls-tls"]
 [dependencies.tokio]
 version = "1.17.0"
 features = ["macros", "rt-multi-thread"]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

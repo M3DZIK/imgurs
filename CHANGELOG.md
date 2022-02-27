@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - added manpage
 - added completion for elvish
 
+### Library
+- added Clone derive
+
 ## [0.3.0] - 2022-01-28
 ### CLI
 - SimpleLogger init error handling

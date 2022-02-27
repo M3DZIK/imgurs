@@ -1,8 +1,7 @@
 use imgurs::api::ImgurClient;
-
 use clap::{Command, IntoApp, Parser, Subcommand};
 use clap_complete::{generate, Generator, Shell};
-use std::io::stdout;
+use std::io::{stdout, self};
 
 use crate::cli::{credits::*, delete_image::*, info_image::*, upload_image::*};
 
@@ -22,20 +21,23 @@ struct Cli {
 
 #[derive(Subcommand, Debug)]
 enum Commands {
-    #[clap(about = "Print API Rate Limit")]
+    #[clap(about = "Print API Rate Limit", display_order = 1)]
     Credits,
 
-    #[clap(about = "Upload image to Imgur")]
+    #[clap(about = "Upload image to Imgur", display_order = 2)]
     Upload { path: String },
 
-    #[clap(about = "Delete image from Imgur")]
+    #[clap(about = "Delete image from Imgur", display_order = 3)]
     Delete { delete_hash: String },
 
-    #[clap(about = "Print image info")]
+    #[clap(about = "Print image info", display_order = 4)]
     Info { id: String },
 
-    #[clap(about = "Print shell completions (bash, zsh, fish, powershell)")]
+    #[clap(about = "Generate completion file for a shell [bash, elvish, fish, powershell, zsh]", display_order = 5)]
     Completions { shell: String },
+
+    #[clap(about = "Generate man page", display_order = 6)]
+    Manpage,
 }
 
 fn print_completions<G: Generator>(gen: G, app: &mut Command) {
@@ -67,12 +69,19 @@ pub async fn parse(client: ImgurClient) {
 
             match shell.as_str() {
                 "bash" => print_completions(Shell::Bash, &mut app),
-                "zsh" => print_completions(Shell::Zsh, &mut app),
+                "elvish" => print_completions(Shell::Elvish, &mut app),
                 "fish" => print_completions(Shell::Fish, &mut app),
                 "powershell" => print_completions(Shell::PowerShell, &mut app),
+                "zsh" => print_completions(Shell::Zsh, &mut app),
 
                 _ => panic!("Completions to shell `{shell}`, not found!"),
             }
+        }
+
+        Commands::Manpage => {
+            let clap_app = Cli::command();
+            let man = clap_mangen::Man::new(clap_app);
+            man.render(&mut io::stdout()).unwrap();
         }
     }
 }

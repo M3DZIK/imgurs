@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### CLI
 - update logger
 - added clipboard
+- added manpage
+- added completion for elvish
 
 ## [0.3.0] - 2022-01-28
 ### CLI

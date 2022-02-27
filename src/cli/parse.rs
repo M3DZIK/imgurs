@@ -1,7 +1,7 @@
-use imgurs::api::ImgurClient;
 use clap::{Command, IntoApp, Parser, Subcommand};
 use clap_complete::{generate, Generator, Shell};
-use std::io::{stdout, self};
+use imgurs::api::ImgurClient;
+use std::io::{self, stdout};
 
 use crate::cli::{credits::*, delete_image::*, info_image::*, upload_image::*};
 
@@ -33,7 +33,10 @@ enum Commands {
     #[clap(about = "Print image info", display_order = 4)]
     Info { id: String },
 
-    #[clap(about = "Generate completion file for a shell [bash, elvish, fish, powershell, zsh]", display_order = 5)]
+    #[clap(
+        about = "Generate completion file for a shell [bash, elvish, fish, powershell, zsh]",
+        display_order = 5
+    )]
     Completions { shell: String },
 
     #[clap(about = "Generate man page", display_order = 6)]

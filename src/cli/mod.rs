@@ -5,9 +5,9 @@ pub mod info_image;
 pub mod parse;
 pub mod upload_image;
 
-use imgurs::api::ImageInfo;
 use chrono::{prelude::DateTime, Utc};
 use colored::Colorize;
+use imgurs::api::ImageInfo;
 use std::time::{Duration, UNIX_EPOCH};
 
 pub fn print_image_info(i: ImageInfo) {

@@ -2,7 +2,7 @@
 
 ## Screenshots
 
-![upload](https://cdn.magicuser.cf/7eMaL5d.png)
+![upload](https://i.imgur.com/MG35kvf.png)
 
 ![delete](https://cdn.magicuser.cf/TSxBrhO.png)
 
@@ -19,7 +19,10 @@ imgurs completions fish > ~/.config/fish/completions/imgurs.fish
 ```
 
 ## Dependencies
-- **xsel** - support clipboard on Linux
+- support clipboard on Linux
+    - **xsel**
+    - **xclip** - alternative to **xsel**
+    - **termux-api** - on **Termux**
 - **libnotify** - support notification on Linux
 
 ## How to install Imgurs CLI?

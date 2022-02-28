@@ -1,6 +1,6 @@
+use super::send_api_request;
 use crate::api::configuration::{api_url, ImgurClient};
 use crate::api::ImageInfo;
-use super::send_api_request;
 
 use reqwest::Method;
 use std::io::{Error, ErrorKind};

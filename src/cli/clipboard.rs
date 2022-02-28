@@ -6,10 +6,10 @@ fn is_program_in_path(program: &str) -> bool {
     use std::{env, fs};
 
     if let Ok(path) = env::var("PATH") {
-        for p in path.split(":") {
+        for p in path.split(':') {
             let p_str = format!("{}/{}", p, program);
             if fs::metadata(p_str).is_ok() {
-                return true
+                return true;
             }
         }
     }
@@ -54,8 +54,12 @@ pub fn set_clipboard(content: String) {
             .spawn()
             .expect("execute command termux-clipboard-set")
     } else {
-        println!("{} {}", "WARN".yellow(), "command for clipboard not found".magenta());
-        return
+        println!(
+            "{} {}",
+            "WARN".yellow(),
+            "command for clipboard not found".magenta()
+        );
+        return;
     }
 
     child

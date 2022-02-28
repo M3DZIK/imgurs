@@ -1,5 +1,5 @@
-use crate::api::configuration::{api_url, ImgurClient};
 use super::send_api_request;
+use crate::api::configuration::{api_url, ImgurClient};
 
 use reqwest::Method;
 use serde_derive::{Deserialize, Serialize};

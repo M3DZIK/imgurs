@@ -1,8 +1,6 @@
 use crate::api::configuration::{api_url, ImgurClient};
-
 use super::send_api_request;
 
-use anyhow::Error as anyhow_err;
 use reqwest::Method;
 use serde_derive::{Deserialize, Serialize};
 use std::io::{Error, ErrorKind};
@@ -28,22 +26,22 @@ pub struct RateLimitData {
     pub client_remaining: i32,
 }
 
-pub async fn rate_limit(c: ImgurClient) -> Result<RateLimitInfo, anyhow_err> {
+pub async fn rate_limit(c: ImgurClient) -> Result<RateLimitInfo, anyhow::Error> {
     let uri = api_url!("credits");
     let res = send_api_request(&c, Method::GET, uri, None).await?;
 
     let status = res.status();
 
     if status.is_client_error() || status.is_server_error() {
-        let body = res.text().await.map_err(anyhow_err::new)?;
+        let body = res.text().await.map_err(anyhow::Error::new)?;
         let err = Error::new(
             ErrorKind::Other,
             format!("server returned non-successful status code = {status}, body = {body}"),
         );
 
-        Err(anyhow_err::from(err))
+        Err(anyhow::Error::from(err))
     } else {
-        let content: RateLimitInfo = res.json().await.map_err(anyhow_err::new)?;
+        let content: RateLimitInfo = res.json().await.map_err(anyhow::Error::new)?;
         Ok(content)
     }
 }

@@ -1,13 +1,11 @@
 use crate::api::configuration::{api_url, ImgurClient};
 use crate::api::ImageInfo;
-
 use super::send_api_request;
 
-use anyhow::Error as anyhow_err;
 use reqwest::Method;
 use std::io::{Error, ErrorKind};
 
-pub async fn get_image(c: ImgurClient, image: &str) -> Result<ImageInfo, anyhow_err> {
+pub async fn get_image(c: ImgurClient, image: &str) -> Result<ImageInfo, anyhow::Error> {
     let uri = api_url!(format!("image/{image}"));
     let res = send_api_request(&c, Method::GET, uri, None).await?;
 
@@ -19,9 +17,9 @@ pub async fn get_image(c: ImgurClient, image: &str) -> Result<ImageInfo, anyhow_
             format!("server returned non-successful status code = {status}"),
         );
 
-        Err(anyhow_err::from(err))
+        Err(anyhow::Error::from(err))
     } else {
-        let content: ImageInfo = res.json().await.map_err(anyhow_err::new)?;
+        let content: ImageInfo = res.json().await.map_err(anyhow::Error::new)?;
         Ok(content)
     }
 }

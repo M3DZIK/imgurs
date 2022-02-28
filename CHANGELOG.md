@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+### CLI
+- clipboard: add support for xclip and termux
 
 ## [0.4.0] - 2022-02-27
 ### CLI

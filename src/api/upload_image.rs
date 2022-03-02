@@ -21,7 +21,12 @@ pub async fn upload_image(c: ImgurClient, image: &str) -> Result<ImageInfo, anyh
     let status = res.status();
 
     if status.is_client_error() || status.is_server_error() {
-        let body = res.text().await.map_err(anyhow::Error::new)?;
+        let mut body = res.text().await.map_err(anyhow::Error::new)?;
+
+        if body.chars().count() > 30 {
+            body = "body is too length".to_string()
+        }
+
         let err = Error::new(
             ErrorKind::Other,
             format!("server returned non-successful status code = {status}, body = {body}"),

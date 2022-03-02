@@ -1,13 +1,13 @@
 use serde_derive::{Deserialize, Serialize};
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct ImageInfo {
     pub data: ImageInfoData,
     pub success: bool,
     pub status: i32,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct ImageInfoData {
     pub id: String,
     pub title: Option<String>,

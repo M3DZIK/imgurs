@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Library
 - added Clone derive
+- if body length is > 30 return body is too length
 
 ## [0.3.0] - 2022-01-28
 ### CLI

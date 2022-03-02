@@ -18,6 +18,12 @@ imgurs completions zsh > /usr/local/share/zsh/site-functions/_imgurs
 imgurs completions fish > ~/.config/fish/completions/imgurs.fish
 ```
 
+## Man page
+
+Generate manpage
+
+    imgurs manpage | gzip > /usr/share/man/man1/imgurs.1.gz
+
 ## Dependencies
 - support clipboard on Linux
     - **xsel**
@@ -38,7 +44,7 @@ Using yay ([AUR](https://aur.archlinux.org/packages/imgurs))
 
     yay -S imgurs
 
-If you are using arch linux you can add [this repo](https://github.com/archlinux-pkg/packages) and run
+or can add [this repo](https://github.com/archlinux-pkg/packages) and run
 
     sudo pacman -Sy imgurs
 

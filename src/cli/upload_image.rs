@@ -2,7 +2,7 @@ use super::clipboard::set_clipboard;
 use imgurs::api::{upload_image::upload_image as upload_img, ImgurClient};
 use notify_rust::Notification;
 
-use crate::config::toml::parse as parse_config;
+use crate::{config::toml, cli::webhook::send_discord_webhook};
 
 use super::print_image_info;
 
@@ -11,7 +11,7 @@ use std::{fs::read as fs_read, path::Path};
 
 macro_rules! notify (
     ($notification: expr) => (
-        if parse_config().notification.enabled {
+        if toml::parse().notification.enabled {
             $notification.show().expect("send notification");
         }
     );
@@ -34,6 +34,7 @@ pub async fn upload_image(client: ImgurClient, path: &str) {
             .summary("Error!")
             .body(&format!("Error: {}", &err.to_string()))
             .appname("Imgurs")); // I don't think you can set it to error
+
         panic!("{}", err)
     });
     print_image_info(i.clone());
@@ -42,7 +43,13 @@ pub async fn upload_image(client: ImgurClient, path: &str) {
 
     notify!(Notification::new().summary("Imgurs").body(&body));
 
-    if parse_config().clipboard.enabled {
-        set_clipboard(i.data.link)
+    let config = toml::parse();
+
+    if config.clipboard.enabled {
+        set_clipboard(i.data.link.clone())
+    }
+
+    if config.discord_webhook.enabled {
+        send_discord_webhook(i.data.link, i.data.deletehash.unwrap()).await.expect("send discord webhook");
     }
 }

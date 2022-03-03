@@ -7,6 +7,7 @@ pub struct Config {
     pub imgur: ConfigImgur,
     pub notification: ConfigNotification,
     pub clipboard: ConfigClipboard,
+    pub discord_webhook: ConfigDiscordWebhook,
 }
 
 #[derive(Debug, Deserialize)]
@@ -22,4 +23,10 @@ pub struct ConfigNotification {
 #[derive(Debug, Deserialize)]
 pub struct ConfigClipboard {
     pub enabled: bool,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct ConfigDiscordWebhook {
+    pub enabled: bool,
+    pub uri: String,
 }

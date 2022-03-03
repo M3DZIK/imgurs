@@ -6,3 +6,7 @@ enabled = true
 
 [clipboard]
 enabled = true
+
+[discord_webhook]
+enabled = false
+uri = ''

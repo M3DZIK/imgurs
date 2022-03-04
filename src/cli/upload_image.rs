@@ -2,7 +2,7 @@ use super::clipboard::set_clipboard;
 use imgurs::api::{upload_image::upload_image as upload_img, ImgurClient};
 use notify_rust::Notification;
 
-use crate::{config::toml, cli::webhook::send_discord_webhook};
+use crate::{cli::webhook::send_discord_webhook, config::toml};
 
 use super::print_image_info;
 
@@ -50,6 +50,8 @@ pub async fn upload_image(client: ImgurClient, path: &str) {
     }
 
     if config.discord_webhook.enabled {
-        send_discord_webhook(i.data.link, i.data.deletehash.unwrap()).await.expect("send discord webhook");
+        send_discord_webhook(i.data.link, i.data.deletehash.unwrap())
+            .await
+            .expect("send discord webhook");
     }
 }

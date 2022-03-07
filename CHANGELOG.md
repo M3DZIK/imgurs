@@ -8,8 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+
+## [0.5.0] - 2022-03-07
 ### CLI
 - clipboard: add support for xclip and termux
+- webhook: send webhook to discord if image uploaded ([example](https://i.imgur.com/CPpHEec.png))
+
+### Library
+- if body length is greater than 30, return message `body is too length`
 
 ## [0.4.0] - 2022-02-27
 ### CLI

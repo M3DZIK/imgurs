@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+### Cli
+- change webhook to discord-webhook (to use rustls)
 
 ## [0.5.0] - 2022-03-07
 ### CLI

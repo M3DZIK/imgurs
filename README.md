@@ -30,7 +30,6 @@ Generate manpage
     - **xclip** - alternative to **xsel**
     - **termux-api** - on **Termux**
 - **libnotify** - support notification on Linux
-- **openssl** - for discord webhook (this is probably temporary I will try to change it to rustls)
 
 ## How to install Imgurs CLI?
 

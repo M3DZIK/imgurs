@@ -1,5 +1,5 @@
-use std::error::Error;
 use discord_webhook::client::WebhookClient;
+use std::error::Error;
 
 use crate::config::toml;
 

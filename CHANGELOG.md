@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+
 ## [0.5.1] - 2022-03-08
 ### Cli
 - change webhook to discord-webhook (to use rustls)
@@ -75,7 +76,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/MedzikUser/imgurs/commits/v0.5.1
+[0.5.0]: https://github.com/MedzikUser/imgurs/commits/v0.5.0
 [0.4.0]: https://github.com/MedzikUser/imgurs/commits/v0.4.0
 [0.3.0]: https://github.com/MedzikUser/imgurs/commits/v0.3.0
 [0.2.0]: https://github.com/MedzikUser/imgurs/commits/v0.2.0

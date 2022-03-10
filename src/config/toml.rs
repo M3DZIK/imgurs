@@ -6,7 +6,7 @@ use dirs::config_dir;
 use log::warn;
 use std::{
     fs::{create_dir_all, read_to_string, File},
-    io::{Write as _, self},
+    io::{self, Write as _},
     path::Path,
 };
 use toml::from_str as toml_from_str;

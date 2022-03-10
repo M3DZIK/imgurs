@@ -44,7 +44,7 @@ features = ["derive", "cargo", "std"]
 
 [dependencies.log]
 version = "0.4.14"
-features = ["release_max_level_info"]
+features = ["release_max_level_info", "max_level_debug"]
 
 [dependencies.simple_logger]
 version = "2.1.0"

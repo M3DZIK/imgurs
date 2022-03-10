@@ -20,6 +20,8 @@ macro_rules! notify (
 pub async fn upload_image(client: ImgurClient, path: &str) {
     let mut image: String = path.to_string();
 
+    let config = toml::parse();
+
     if Path::new(path).exists() {
         let bytes = fs_read(path)
             .map_err(|err| err.to_string())
@@ -29,7 +31,7 @@ pub async fn upload_image(client: ImgurClient, path: &str) {
         panic!("{path} is not a url")
     }
 
-    let i = upload_img(client, &image).await.unwrap_or_else(|err| {
+    let mut i = upload_img(client, &image).await.unwrap_or_else(|err| {
         notify!(Notification::new()
             .summary("Error!")
             .body(&format!("Error: {}", &err.to_string()))
@@ -37,13 +39,16 @@ pub async fn upload_image(client: ImgurClient, path: &str) {
 
         panic!("{}", err)
     });
+
+    if config.imgur.image_cdn != "i.imgur.com" {
+        i.data.link = i.data.link.replace("i.imgur.com", "cdn.magicuser.cf")
+    }
+
     print_image_info(i.clone());
 
     let body = format!("Uploaded {}", i.data.link);
 
     notify!(Notification::new().summary("Imgurs").body(&body));
-
-    let config = toml::parse();
 
     if config.clipboard.enabled {
         set_clipboard(i.data.link.clone())

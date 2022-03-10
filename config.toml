@@ -1,5 +1,6 @@
 [imgur]
 id = '3e3ce0d7ac14d56'
+image_cdn = 'i.imgur.com'
 
 [notification]
 enabled = true

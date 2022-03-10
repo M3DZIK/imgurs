@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+### CLI
+- webhook: added url in title
+- cli: change image domain to your own (set in config)
+- if the configuration file cannot be open, ask the user whether to overwrite the file instead of overwriting it without asking
+- logger: set `max_level_debug` in debug binary
 
 ## [0.5.1] - 2022-03-08
 ### Cli

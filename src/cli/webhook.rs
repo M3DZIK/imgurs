@@ -10,11 +10,11 @@ pub async fn send_discord_webhook(
     let url = toml::parse().discord_webhook.uri;
     let client: WebhookClient = WebhookClient::new(&url);
 
-    let webhook = client
+    client
         .send(|message| {
             message.username("Imgurs").embed(|embed| {
                 embed
-                    .title("Imgurs")
+                    .title(&link)
                     .description(&format!("Delete Hash ||{deletehash}||"))
                     .image(&link)
                     .footer(
@@ -26,7 +26,5 @@ pub async fn send_discord_webhook(
                     )
             })
         })
-        .await;
-
-    webhook
+        .await
 }

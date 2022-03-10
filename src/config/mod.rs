@@ -13,6 +13,7 @@ pub struct Config {
 #[derive(Debug, Deserialize)]
 pub struct ConfigImgur {
     pub id: String,
+    pub image_cdn: String,
 }
 
 #[derive(Debug, Deserialize)]

@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - commands in the code
 - api functions to `impl` in `ImgurClient`
+- documentation (example usage)
 
 ### Breaking Changes
 - lib: moved everything to the main package with api submodules (before `imgurs::api::ImgurClient`, after `imgurs::api::ImgurClient`)

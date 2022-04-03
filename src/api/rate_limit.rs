@@ -46,7 +46,7 @@ pub async fn rate_limit(client: &ImgurClient) -> Result<RateLimitInfo, Error> {
             format!("server returned non-successful status code = {status}, body = {body}"),
         );
 
-        Err(err)?
+        Err(err.into())
     } else {
         let content = res.json::<RateLimitInfo>().await?;
         Ok(content)

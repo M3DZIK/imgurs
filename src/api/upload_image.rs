@@ -5,7 +5,7 @@ use reqwest::Method;
 
 use super::{client::api_url, send_api_request, ImageInfo, ImgurClient};
 
-pub async fn upload_image(c: &ImgurClient, image: String) -> Result<ImageInfo, Error> {
+pub async fn upload_image(client: &ImgurClient, image: String) -> Result<ImageInfo, Error> {
     // create http form (hashmap)
     let mut form = HashMap::new();
     // insert image to form
@@ -15,7 +15,7 @@ pub async fn upload_image(c: &ImgurClient, image: String) -> Result<ImageInfo, E
     let uri = api_url!("image");
 
     // send request to imgur api
-    let res = send_api_request(&c, Method::POST, uri, Some(form)).await?;
+    let res = send_api_request(client, Method::POST, uri, Some(form)).await?;
 
     // get response http code
     let status = res.status();
@@ -33,7 +33,7 @@ pub async fn upload_image(c: &ImgurClient, image: String) -> Result<ImageInfo, E
             format!("server returned non-successful status code = {status}, body = {body}"),
         );
 
-        Err(err)?
+        Err(err.into())
     } else {
         let content: ImageInfo = res.json().await?;
         Ok(content)

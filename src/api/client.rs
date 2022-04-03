@@ -43,7 +43,7 @@ impl ImgurClient {
                 format!("{path} is not url or file path"),
             );
 
-            Err(anyhow::Error::from(err))?
+            return Err(err.into());
         }
 
         upload_image(self, image).await

@@ -22,7 +22,7 @@ pub async fn get_image(client: &ImgurClient, image: String) -> Result<ImageInfo,
             format!("server returned non-successful status code = {status}"),
         );
 
-        Err(err)?
+        Err(err.into())
     } else {
         let content: ImageInfo = res.json().await?;
         Ok(content)

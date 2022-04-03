@@ -1,18 +1,19 @@
+use imgurs::ImgurClient;
+use simple_logger::SimpleLogger;
+
 mod cli;
 mod config;
-
-use cli::parse::parse;
-use imgurs::ImgurClient;
-
-use simple_logger::SimpleLogger;
 
 #[tokio::main]
 async fn main() {
     SimpleLogger::new().init().expect("init SimpleLogger");
     better_panic::install();
 
+    // parse config file
     let config = config::toml::parse();
-    let client = ImgurClient::new((&config.imgur.id).to_string());
 
-    parse(client).await
+    // create imgur client
+    let client = ImgurClient::new(config.imgur.id);
+
+    cli::parse(client).await
 }

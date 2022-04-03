@@ -28,7 +28,7 @@ pub async fn delete_image(client: &ImgurClient, delete_hash: String) -> Result<(
             format!("server returned non-successful status code = {status}, body = {body}"),
         );
 
-        Err(err)?
+        return Err(err.into());
     }
 
     Ok(())

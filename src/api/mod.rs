@@ -15,8 +15,8 @@ pub use upload_image::*;
 
 use std::collections::HashMap;
 
-use reqwest::{Response, Method};
 use anyhow::Error;
+use reqwest::{Method, Response};
 
 // send request to imgur api
 pub async fn send_api_request(
@@ -38,10 +38,7 @@ pub async fn send_api_request(
     // add `Authorization` and `User-Agent` to request
     req = req
         .header("Authorization", format!("Client-ID {}", config.client_id))
-        .header(
-            "User-Agent",
-            format!("Imgur/{:?}", version),
-        );
+        .header("User-Agent", format!("Imgur/{:?}", version));
 
     // if exists add hashmap to request
     if form != None {

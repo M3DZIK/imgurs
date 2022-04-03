@@ -1,11 +1,16 @@
 use chrono::{prelude::DateTime, Utc};
 use colored::Colorize;
-use imgurs::api::{rate_limit::rate_limit, ImgurClient};
+use imgurs::ImgurClient;
 use std::time::{Duration, UNIX_EPOCH};
 
 pub async fn credits(client: ImgurClient) {
-    let i = rate_limit(client).await.expect("send api request");
+    // get client ratelimit from imgur api
+    let i = client
+        .rate_limit()
+        .await
+        .expect("send request to imgur api");
 
+    // format image upload date
     let date = UNIX_EPOCH + Duration::from_secs(i.data.user_reset.try_into().unwrap());
     let datetime = DateTime::<Utc>::from(date);
     let timestamp_str = datetime.format("%Y-%m-%d %H:%M:%S").to_string();

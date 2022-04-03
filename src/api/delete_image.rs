@@ -1,29 +1,35 @@
-use super::send_api_request;
-use crate::api::configuration::{api_url, ImgurClient};
+use std::io;
 
+use anyhow::Error;
 use reqwest::Method;
-use std::io::{Error, ErrorKind};
 
-pub async fn delete_image(c: ImgurClient, delete_hash: String) -> Result<String, anyhow::Error> {
+use super::{client::api_url, send_api_request, ImgurClient};
+
+pub async fn delete_image(client: &ImgurClient, delete_hash: String) -> Result<(), Error> {
+    // get imgur api url
     let uri = api_url!(format!("image/{delete_hash}"));
-    let res = send_api_request(&c, Method::DELETE, uri, None).await?;
 
+    // send request to imgur api
+    let res = send_api_request(client, Method::DELETE, uri, None).await?;
+
+    // get response http code
     let status = res.status();
 
+    // check if an error has occurred
     if status.is_client_error() || status.is_server_error() {
-        let mut body = res.text().await.map_err(anyhow::Error::new)?;
+        let mut body = res.text().await?;
 
         if body.chars().count() > 30 {
             body = "body is too length".to_string()
         }
 
-        let err = Error::new(
-            ErrorKind::Other,
+        let err = io::Error::new(
+            io::ErrorKind::Other,
             format!("server returned non-successful status code = {status}, body = {body}"),
         );
 
-        Err(anyhow::Error::from(err))
-    } else {
-        Ok("If the delete hash was correct the image was deleted!".to_string())
+        Err(err)?
     }
+
+    Ok(())
 }

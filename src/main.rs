@@ -2,7 +2,7 @@ mod cli;
 mod config;
 
 use cli::parse::parse;
-use imgurs::api::ImgurClient;
+use imgurs::ImgurClient;
 
 use simple_logger::SimpleLogger;
 

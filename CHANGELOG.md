@@ -8,6 +8,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+### CLI
+- completions: changed type from String to Shell
+- removed `&` from `cli.commands` (line 54 in [parse.rs](./src/cli/parse.rs))
+
+### Library
+- removed `.map_err(anyhow::Error::new)` when function returns error
+
+### Added
+- commands in the code
+- api functions to `impl` in `ImgurClient`
+
+### Breaking Changes
+- lib: moved everything to the main package with api submodules (before `imgurs::api::ImgurClient`, after `imgurs::api::ImgurClient`)
 
 ## [0.6.0] - 2022-03-14
 ### CLI

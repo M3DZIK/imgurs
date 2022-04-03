@@ -1,8 +1,14 @@
-use imgurs::api::{get_image::get_image, ImgurClient};
+use imgurs::ImgurClient;
 
 use super::print_image_info;
 
-pub async fn image_info(client: ImgurClient, id: &str) {
-    let info = get_image(client, id).await.expect("send api request");
+pub async fn image_info(client: ImgurClient, id: String) {
+    // get a image info from imgur
+    let info = client
+        .image_info(id)
+        .await
+        .expect("send request to imfur api");
+
+    // print image information from imgur
     print_image_info(info);
 }

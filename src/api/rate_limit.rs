@@ -1,9 +1,10 @@
-use super::send_api_request;
-use crate::api::configuration::{api_url, ImgurClient};
+use std::io;
 
+use anyhow::Error;
 use reqwest::Method;
-use serde_derive::{Deserialize, Serialize};
-use std::io::{Error, ErrorKind};
+use serde::{Deserialize, Serialize};
+
+use super::{client::api_url, send_api_request, ImgurClient};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RateLimitInfo {
@@ -26,22 +27,28 @@ pub struct RateLimitData {
     pub client_remaining: i32,
 }
 
-pub async fn rate_limit(c: ImgurClient) -> Result<RateLimitInfo, anyhow::Error> {
+pub async fn rate_limit(client: &ImgurClient) -> Result<RateLimitInfo, Error> {
+    // get imgur api url
     let uri = api_url!("credits");
-    let res = send_api_request(&c, Method::GET, uri, None).await?;
 
+    // send request to imgur api
+    let res = send_api_request(client, Method::GET, uri, None).await?;
+
+    // get response http code
     let status = res.status();
 
+    // check if an error has occurred
     if status.is_client_error() || status.is_server_error() {
-        let body = res.text().await.map_err(anyhow::Error::new)?;
-        let err = Error::new(
-            ErrorKind::Other,
+        let body = res.text().await?;
+
+        let err = io::Error::new(
+            io::ErrorKind::Other,
             format!("server returned non-successful status code = {status}, body = {body}"),
         );
 
-        Err(anyhow::Error::from(err))
+        Err(err)?
     } else {
-        let content: RateLimitInfo = res.json().await.map_err(anyhow::Error::new)?;
+        let content = res.json::<RateLimitInfo>().await?;
         Ok(content)
     }
 }

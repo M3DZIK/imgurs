@@ -8,14 +8,17 @@ pub mod webhook;
 
 use chrono::{prelude::DateTime, Utc};
 use colored::Colorize;
-use imgurs::api::ImageInfo;
+use imgurs::ImageInfo;
 use std::time::{Duration, UNIX_EPOCH};
 
+// print image information from imgur
 pub fn print_image_info(i: ImageInfo) {
+    // format image upload date
     let d = UNIX_EPOCH + Duration::from_secs(i.data.datetime.try_into().unwrap());
     let datetime = DateTime::<Utc>::from(d);
     let timestamp_str = datetime.format("%Y-%m-%d %H:%M:%S").to_string();
 
+    // image title
     if i.data.title != None {
         println!(
             "{} {}",
@@ -26,6 +29,8 @@ pub fn print_image_info(i: ImageInfo) {
                 .magenta()
         );
     }
+
+    // image description
     if i.data.description != None {
         println!(
             "{} {}",
@@ -36,6 +41,8 @@ pub fn print_image_info(i: ImageInfo) {
                 .magenta()
         );
     }
+
+    // image deletehas
     if i.data.deletehash != None {
         println!(
             "{} {}",

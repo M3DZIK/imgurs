@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+
+## [0.7.0] - 2022-04-04
 ### CLI
 - completions: changed type from String to Shell
 - removed `&` from `cli.commands` (line 54 in [parse.rs](./src/cli/parse.rs))
@@ -97,7 +99,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/MedzikUser/imgurs/commits/v0.7.0
 [0.6.0]: https://github.com/MedzikUser/imgurs/commits/v0.6.0
 [0.5.1]: https://github.com/MedzikUser/imgurs/commits/v0.5.1
 [0.5.0]: https://github.com/MedzikUser/imgurs/commits/v0.5.0

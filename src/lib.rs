@@ -11,7 +11,7 @@
 //! your application, simply add it to your project's `Cargo.toml`.
 //! ```toml
 //! [dependencies]
-//! imgurs = "0.7.0"
+//! imgurs = "0.7.1"
 //! ```
 //!
 //! # Example Usage

@@ -9,7 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [0.7.0] - 2022-04-04
+## [0.7.1] - 2022-04-04
+- fix build on what is not linux
+
+## [0.7.0] - 2022-04-03
 ### CLI
 - completions: changed type from String to Shell
 - removed `&` from `cli.commands` (line 54 in [parse.rs](./src/cli/parse.rs))

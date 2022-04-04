@@ -9,7 +9,7 @@ repository = "https://github.com/MedzikUser/imgurs.git"
 keywords = ["imgur", "imgur-api", "image", "image-upload"]
 categories = ["command-line-utilities"]
 rust-version = "1.58"
-version = "0.7.0"
+version = "0.7.1"
 edition = "2021"
 
 [profile.release]

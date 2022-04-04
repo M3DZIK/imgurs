@@ -26,29 +26,29 @@
 //! ## Image Upload
 //! ```
 //! // From URL
-//! let info = client.upload_image("https://cdn.magicuser.cf/lFaGr1x.png").await?
+//! let info = client.upload_image("https://cdn.magicuser.cf/lFaGr1x.png").await?;
 //!
 //! // From File
-//! let info = client.upload_image("path/to/image.png").await?
+//! let info = client.upload_image("path/to/image.png").await?;
 //! ```
 //!
 //! ## Delete Image
 //! ```
-//! client.delete_image("SuPeRsEcReTDeLeTeHaSh").await? // delete hash
+//! client.delete_image("SuPeRsEcReTDeLeTeHaSh").await?; // delete hash
 //! ```
 //!
 //! ## Get Image Info
 //! ```
-//! let info = client.image_info("lFaGr1x").await? // image id
+//! let info = client.image_info("lFaGr1x").await?; // image id
 //!
-//! println!("{:?}", info)
+//! println!("{:?}", info);
 //! ```
 //!
 //! ## Get Client RateLimit
 //! ```
-//! let info = client.rate_limit.await?
+//! let info = client.rate_limit.await?;
 //!
-//! println!("{:?}", info)
+//! println!("{:?}", info);
 //! ```
 
 mod api;

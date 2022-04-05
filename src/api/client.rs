@@ -34,9 +34,13 @@ impl ImgurClient {
 
         // check if the specified file exists if not then check if it is a url
         if Path::new(&path).exists() {
-            image = fs::read_to_string(&path)
+            let bytes = fs::read(&path)
                 .map_err(|err| err.to_string())
                 .expect("read file");
+
+            image = base64::encode(bytes)
+
+        // validate adress url
         } else if !validator::validate_url(&path) {
             let err = io::Error::new(
                 io::ErrorKind::Other,

@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.2] - 2022-04-05
+### HotFix
+- fix upload image from file
+
 ## [0.7.1] - 2022-04-04
 - fix build on what is not linux
 
@@ -102,7 +106,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.7.2...HEAD
+[0.7.2]: https://github.com/MedzikUser/imgurs/commits/v0.7.2
+[0.7.1]: https://github.com/MedzikUser/imgurs/commits/v0.7.1
 [0.7.0]: https://github.com/MedzikUser/imgurs/commits/v0.7.0
 [0.6.0]: https://github.com/MedzikUser/imgurs/commits/v0.6.0
 [0.5.1]: https://github.com/MedzikUser/imgurs/commits/v0.5.1

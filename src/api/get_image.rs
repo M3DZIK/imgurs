@@ -5,7 +5,7 @@ use reqwest::Method;
 
 use super::{client::api_url, send_api_request, ImageInfo, ImgurClient};
 
-pub async fn get_image(client: &ImgurClient, image: String) -> Result<ImageInfo, Error> {
+pub async fn get_image(client: &ImgurClient, image: &str) -> Result<ImageInfo, Error> {
     // get imgur api url
     let uri = api_url!(format!("image/{image}"));
 

@@ -1,4 +1,4 @@
-//! This crate is an unofficial implementation of the [Imgur](https://imgur.com) API in Rust.
+//! This crate is an unofficial implementation of the [Imgur API](https://imgur.com) in Rust.
 //!
 //! # Installation
 //!
@@ -17,35 +17,35 @@
 //! # Example Usage
 //!
 //! ## Create new ImgurClient
-//! ```
+//! ```ignore
 //! use imgurs::ImgurClient;
 //!
 //! let client = ImgurClient::new("client id");
 //! ```
 //!
 //! ## Image Upload
-//! ```
+//! ```ignore
 //! // From URL
-//! let info = client.upload_image("https://cdn.magicuser.cf/lFaGr1x.png").await?;
+//! let info = client.upload_image("https://i.imgur.com/lFaGr1x.png").await?;
 //!
 //! // From File
 //! let info = client.upload_image("path/to/image.png").await?;
 //! ```
 //!
 //! ## Delete Image
-//! ```
+//! ```ignore
 //! client.delete_image("SuPeRsEcReTDeLeTeHaSh").await?; // delete hash
 //! ```
 //!
 //! ## Get Image Info
-//! ```
+//! ```ignore
 //! let info = client.image_info("lFaGr1x").await?; // image id
 //!
 //! println!("{:?}", info);
 //! ```
 //!
 //! ## Get Client RateLimit
-//! ```
+//! ```ignore
 //! let info = client.rate_limit.await?;
 //!
 //! println!("{:?}", info);

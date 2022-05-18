@@ -2,9 +2,9 @@
 
 ## Screenshots
 
-![upload](https://i.imgur.com/MG35kvf.png)
+![](https://i.imgur.com/MG35kvf.png)
 
-![delete](https://cdn.magicuser.cf/TSxBrhO.png)
+![](https://i.imgur.com/TSxBrhO.png)
 
 ## Shell completions
 

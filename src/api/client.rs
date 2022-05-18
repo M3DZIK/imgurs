@@ -6,7 +6,7 @@ macro_rules! api_url (
 
 use std::{fmt, fs, io, path::Path};
 
-use anyhow::Error;
+use anyhow::Result;
 pub(crate) use api_url;
 use reqwest::Client;
 
@@ -24,24 +24,39 @@ impl fmt::Debug for ImgurClient {
 }
 
 impl ImgurClient {
-    pub fn new(client_id: String) -> Self {
+    /// Create new Imgur Client
+    /// ```
+    /// use imgurs::ImgurClient;
+    ///
+    /// let client = ImgurClient::new("3e3ce0d7ac14d56");
+    /// ```
+    pub fn new(client_id: &str) -> Self {
+        let client_id = client_id.to_string();
         let client = Client::new();
         ImgurClient { client_id, client }
     }
 
-    pub async fn upload_image(&self, path: String) -> Result<ImageInfo, Error> {
-        let mut image: String = path.clone();
+    /// Upload image to Imgur
+    /// ```
+    /// use imgurs::ImgurClient;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = ImgurClient::new("3e3ce0d7ac14d56");
+    ///
+    ///     client.upload_image("https://i.imgur.com/lFaGr1x.png").await.expect("upload image");
+    /// }
+    /// ```
+    pub async fn upload_image(&self, path: &str) -> Result<ImageInfo> {
+        let mut image = path.to_string();
 
         // check if the specified file exists if not then check if it is a url
         if Path::new(&path).exists() {
-            let bytes = fs::read(&path)
-                .map_err(|err| err.to_string())
-                .expect("read file");
-
+            let bytes = fs::read(&path)?;
             image = base64::encode(bytes)
-
+        }
         // validate adress url
-        } else if !validator::validate_url(&path) {
+        else if !validator::validate_url(&*path) {
             let err = io::Error::new(
                 io::ErrorKind::Other,
                 format!("{path} is not url or file path"),
@@ -53,15 +68,51 @@ impl ImgurClient {
         upload_image(self, image).await
     }
 
-    pub async fn delete_image(&self, delete_hash: String) -> Result<(), Error> {
+    /// Delete image from Imgur
+    /// ```
+    /// use imgurs::ImgurClient;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = ImgurClient::new("3e3ce0d7ac14d56");
+    ///
+    ///     let image = client.upload_image("https://i.imgur.com/lFaGr1x.png").await.expect("upload image");
+    ///     let deletehash = image.data.deletehash.unwrap();
+    ///
+    ///     client.delete_image(&deletehash).await.expect("delete image");
+    /// }
+    /// ```
+    pub async fn delete_image(&self, delete_hash: &str) -> Result<()> {
         delete_image(self, delete_hash).await
     }
 
-    pub async fn rate_limit(&self) -> Result<RateLimitInfo, Error> {
+    /// Client Rate Limit
+    /// ```
+    /// use imgurs::ImgurClient;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = ImgurClient::new("3e3ce0d7ac14d56");
+    ///
+    ///     client.rate_limit().await.expect("get rate limit");
+    /// }
+    /// ```
+    pub async fn rate_limit(&self) -> Result<RateLimitInfo> {
         rate_limit(self).await
     }
 
-    pub async fn image_info(&self, id: String) -> Result<ImageInfo, Error> {
+    /// Get Imgur image info
+    /// ```
+    /// use imgurs::ImgurClient;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = ImgurClient::new("3e3ce0d7ac14d56");
+    ///
+    ///     client.image_info("lFaGr1x").await.expect("delete image");
+    /// }
+    /// ```
+    pub async fn image_info(&self, id: &str) -> Result<ImageInfo> {
         get_image(self, id).await
     }
 }

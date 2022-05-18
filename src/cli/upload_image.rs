@@ -20,7 +20,7 @@ pub async fn upload_image(client: ImgurClient, path: String) {
     let config = toml::parse();
 
     // upload a image to imgur
-    let mut i = client.upload_image(path).await.unwrap_or_else(|err| {
+    let mut i = client.upload_image(&path).await.unwrap_or_else(|err| {
         notify!(Notification::new()
             .summary("Error!")
             .body(&format!("Error: {}", &err.to_string()))

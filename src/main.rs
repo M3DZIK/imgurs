@@ -13,7 +13,7 @@ async fn main() {
     let config = config::toml::parse();
 
     // create imgur client
-    let client = ImgurClient::new(config.imgur.id);
+    let client = ImgurClient::new(&config.imgur.id);
 
     cli::parse(client).await
 }

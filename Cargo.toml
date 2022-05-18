@@ -1,5 +1,6 @@
 [package]
 name = "imgurs"
+version = "0.7.3"
 description = "API and CLI for Imgur"
 license = "BSD-3-Clause"
 readme = "README.md"
@@ -9,7 +10,6 @@ repository = "https://github.com/MedzikUser/imgurs.git"
 keywords = ["imgur", "imgur-api", "image", "image-upload"]
 categories = ["command-line-utilities"]
 rust-version = "1.58"
-version = "0.7.2"
 edition = "2021"
 
 [profile.release]

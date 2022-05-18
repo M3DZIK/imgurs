@@ -22,9 +22,9 @@ pub async fn send_discord_webhook(
         .send(|message| {
             message.username("Imgurs").embed(|embed| {
                 embed
-                    .title(&link)
+                    .title(link)
                     .description(&format!("Delete Hash ||{deletehash}||"))
-                    .image(&link)
+                    .image(link)
                     .footer(&format!("Imgurs v{version}"), None)
             })
         })

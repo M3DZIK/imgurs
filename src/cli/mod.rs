@@ -15,7 +15,7 @@ use imgurs::ImageInfo;
 use std::time::{Duration, UNIX_EPOCH};
 
 // print image information from imgur
-pub fn print_image_info(i: ImageInfo) {
+pub fn print_image_info(i: &ImageInfo) {
     // format image upload date
     let d = UNIX_EPOCH + Duration::from_secs(i.data.datetime.try_into().unwrap());
     let datetime = DateTime::<Utc>::from(d);
@@ -23,37 +23,34 @@ pub fn print_image_info(i: ImageInfo) {
 
     // image title
     if i.data.title != None {
+        let title = i.data.title.clone();
+
         println!(
             "{} {}",
             "title".green(),
-            i.data
-                .title
-                .unwrap_or_else(|| "unknown".to_string())
-                .magenta()
+            title.unwrap_or_else(|| "unknown".to_string()).magenta()
         );
     }
 
     // image description
     if i.data.description != None {
+        let desc = i.data.description.clone();
+
         println!(
             "{} {}",
             "description".green(),
-            i.data
-                .description
-                .unwrap_or_else(|| "unknown".to_string())
-                .magenta()
+            desc.unwrap_or_else(|| "unknown".to_string()).magenta()
         );
     }
 
     // image deletehas
     if i.data.deletehash != None {
+        let delhash = i.data.deletehash.clone();
+
         println!(
             "{} {}",
             "deletehash".green(),
-            i.data
-                .deletehash
-                .unwrap_or_else(|| "unknown".to_string())
-                .magenta()
+            delhash.unwrap_or_else(|| "unknown".to_string()).magenta()
         );
     }
 

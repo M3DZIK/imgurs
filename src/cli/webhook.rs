@@ -5,8 +5,8 @@ use crate::config::toml;
 
 // send embed with link and deletehash to discord (something like logger)
 pub async fn send_discord_webhook(
-    link: String,
-    deletehash: String,
+    link: &str,
+    deletehash: &str,
 ) -> Result<(), Box<dyn Error + Send + Sync>> {
     // get discord webhook uri from config
     let url = toml::parse().discord_webhook.uri;

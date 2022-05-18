@@ -1,7 +1,8 @@
+use std::time::{Duration, UNIX_EPOCH};
+
 use chrono::{prelude::DateTime, Utc};
 use colored::Colorize;
 use imgurs::ImgurClient;
-use std::time::{Duration, UNIX_EPOCH};
 
 pub async fn credits(client: ImgurClient) {
     // get client ratelimit from imgur api

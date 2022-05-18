@@ -3,7 +3,7 @@
     not(any(target_os = "macos", target_os = "android", target_os = "emscripten"))
 ))]
 // use xclip (or a similar program that is installed) because the kernel deletes the clipboard after the process ends
-pub fn set_clipboard(content: String) {
+pub fn set_clipboard(content: &str) {
     fn is_program_in_path(program: &str) -> bool {
         if let Ok(path) = std::env::var("PATH") {
             for p in path.split(':') {
@@ -79,7 +79,7 @@ pub fn set_clipboard(content: String) {
     unix,
     not(any(target_os = "macos", target_os = "android", target_os = "emscripten"))
 )))]
-pub fn set_clipboard(content: String) {
+pub fn set_clipboard(content: &str) {
     let mut clipboard = arboard::Clipboard::new().unwrap();
     clipboard.set_text(content).unwrap();
 }

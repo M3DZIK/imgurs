@@ -1,10 +1,10 @@
-use super::clipboard::set_clipboard;
 use imgurs::ImgurClient;
 use notify_rust::Notification;
 
-use crate::{cli::webhook::send_discord_webhook, config::toml};
-
-use super::print_image_info;
+use crate::{
+    cli::{clipboard::set_clipboard, print_image_info, webhook::send_discord_webhook},
+    config::toml,
+};
 
 // show notification
 macro_rules! notify (
@@ -23,7 +23,7 @@ pub async fn upload_image(client: ImgurClient, path: String) {
     let mut i = client.upload_image(&path).await.unwrap_or_else(|err| {
         notify!(Notification::new()
             .summary("Error!")
-            .body(&format!("Error: {}", &err.to_string()))
+            .body(&format!("Error: {}", err))
             .appname("Imgurs")); // I don't think you can set it to error
 
         panic!("send request to imagur api: {}", err)
@@ -35,7 +35,7 @@ pub async fn upload_image(client: ImgurClient, path: String) {
     }
 
     // print image information from imgur
-    print_image_info(i.clone());
+    print_image_info(&i);
 
     // send notification that the image has been uploaded
     notify!(Notification::new()
@@ -44,12 +44,12 @@ pub async fn upload_image(client: ImgurClient, path: String) {
 
     // if enabled copy link to clipboard
     if config.clipboard.enabled {
-        set_clipboard(i.data.link.clone())
+        set_clipboard(&i.data.link)
     }
 
     // if enabled send embed with link and deletehash to discord (something like logger)
     if config.discord_webhook.enabled {
-        send_discord_webhook(i.data.link, i.data.deletehash.unwrap())
+        send_discord_webhook(&i.data.link, &i.data.deletehash.unwrap())
             .await
             .expect("send discord webhook");
     }

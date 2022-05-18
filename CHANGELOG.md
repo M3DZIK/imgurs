@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.3] - 2022-05-18
+### Library
+- add code comments and tests
+- change `String` to `&str` in ImgurClient functions
+
+### Other
+- bump deps
+- use `anyhow::Result<...>` instead `Result<..., Error>`
+
 ## [0.7.2] - 2022-04-05
 ### HotFix
 - fix upload image from file
@@ -106,7 +115,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.7.2...HEAD
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.7.3...HEAD
+[0.7.3]: https://github.com/MedzikUser/imgurs/commits/v0.7.3
 [0.7.2]: https://github.com/MedzikUser/imgurs/commits/v0.7.2
 [0.7.1]: https://github.com/MedzikUser/imgurs/commits/v0.7.1
 [0.7.0]: https://github.com/MedzikUser/imgurs/commits/v0.7.0

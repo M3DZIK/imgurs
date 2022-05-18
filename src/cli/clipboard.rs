@@ -81,5 +81,5 @@ pub fn set_clipboard(content: &str) {
 )))]
 pub fn set_clipboard(content: &str) {
     let mut clipboard = arboard::Clipboard::new().unwrap();
-    clipboard.set_text(content).unwrap();
+    clipboard.set_text(content.to_string()).unwrap();
 }

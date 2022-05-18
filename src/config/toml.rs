@@ -1,6 +1,5 @@
 use super::Config;
 
-use anyhow::Error;
 use colored::Colorize;
 use dirs::config_dir;
 use log::warn;
@@ -53,8 +52,8 @@ pub fn parse() -> Config {
 fn toml() -> anyhow::Result<Config> {
     let config_dir = config_dir().unwrap();
     let file_dir = format!("{}{CONFIG_DIR}", config_dir.to_string_lossy());
-    let toml_str = read_to_string(file_dir).map_err(Error::new)?;
-    let decode = toml_from_str(&toml_str).map_err(Error::new)?;
+    let toml_str = read_to_string(file_dir)?;
+    let decode = toml_from_str(&toml_str)?;
 
     Ok(decode)
 }

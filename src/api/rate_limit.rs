@@ -1,6 +1,5 @@
 use std::io;
 
-use anyhow::Error;
 use reqwest::Method;
 use serde::{Deserialize, Serialize};
 
@@ -27,7 +26,7 @@ pub struct RateLimitData {
     pub client_remaining: i32,
 }
 
-pub async fn rate_limit(client: &ImgurClient) -> Result<RateLimitInfo, Error> {
+pub async fn rate_limit(client: &ImgurClient) -> anyhow::Result<RateLimitInfo> {
     // get imgur api url
     let uri = api_url!("credits");
 

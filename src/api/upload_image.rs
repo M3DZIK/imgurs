@@ -1,11 +1,10 @@
 use std::{collections::HashMap, io};
 
-use anyhow::Error;
 use reqwest::Method;
 
 use super::{client::api_url, send_api_request, ImageInfo, ImgurClient};
 
-pub async fn upload_image(client: &ImgurClient, image: String) -> Result<ImageInfo, Error> {
+pub async fn upload_image(client: &ImgurClient, image: String) -> anyhow::Result<ImageInfo> {
     // create http form (hashmap)
     let mut form = HashMap::new();
     // insert image to form

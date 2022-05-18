@@ -1,11 +1,10 @@
 use std::io;
 
-use anyhow::Error;
 use reqwest::Method;
 
 use super::{client::api_url, send_api_request, ImgurClient};
 
-pub async fn delete_image(client: &ImgurClient, delete_hash: &str) -> Result<(), Error> {
+pub async fn delete_image(client: &ImgurClient, delete_hash: &str) -> anyhow::Result<()> {
     // get imgur api url
     let uri = api_url!(format!("image/{delete_hash}"));
 

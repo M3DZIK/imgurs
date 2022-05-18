@@ -50,7 +50,7 @@ pub fn parse() -> Config {
     })
 }
 
-fn toml() -> Result<Config, Error> {
+fn toml() -> anyhow::Result<Config> {
     let config_dir = config_dir().unwrap();
     let file_dir = format!("{}{CONFIG_DIR}", config_dir.to_string_lossy());
     let toml_str = read_to_string(file_dir).map_err(Error::new)?;

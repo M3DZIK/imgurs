@@ -15,7 +15,6 @@ pub use upload_image::*;
 
 use std::collections::HashMap;
 
-use anyhow::Error;
 use reqwest::{Method, Response};
 
 // send request to imgur api
@@ -24,7 +23,7 @@ pub async fn send_api_request(
     method: Method,
     uri: String,
     form: Option<HashMap<&str, String>>,
-) -> Result<Response, Error> {
+) -> anyhow::Result<Response> {
     // get request client
     let client = &config.client;
 

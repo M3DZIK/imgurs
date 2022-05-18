@@ -1,11 +1,10 @@
 use std::io;
 
-use anyhow::Error;
 use reqwest::Method;
 
 use super::{client::api_url, send_api_request, ImageInfo, ImgurClient};
 
-pub async fn get_image(client: &ImgurClient, image: &str) -> Result<ImageInfo, Error> {
+pub async fn get_image(client: &ImgurClient, image: &str) -> anyhow::Result<ImageInfo> {
     // get imgur api url
     let uri = api_url!(format!("image/{image}"));
 

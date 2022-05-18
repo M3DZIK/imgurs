@@ -1,5 +1,9 @@
 # Imgurs - CLI and Library for Imgur API
 
+![](https://img.shields.io/github/license/MedzikUser/imgurs)
+![](https://img.shields.io/tokei/lines/github/MedzikUser/imgurs)
+![](https://img.shields.io/github/languages/code-size/MedzikUser/imgurs)
+
 ## Screenshots
 
 ![](https://i.imgur.com/MG35kvf.png)

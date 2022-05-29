@@ -26,7 +26,7 @@ pub async fn upload_image(client: ImgurClient, path: String) {
             .body(&format!("Error: {}", err))
             .appname("Imgurs")); // I don't think you can set it to error
 
-        panic!("send request to imagur api: {}", err)
+        panic!("send request to imgur api: {}", err)
     });
 
     // change domain to proxy (to be set in config)

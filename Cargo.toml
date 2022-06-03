@@ -57,5 +57,5 @@ default-features = false
 features = ["json", "rustls-tls"]
 
 [dependencies.tokio]
-version = "1.18.2"
+version = "1.19.0"
 features = ["macros", "rt-multi-thread"]

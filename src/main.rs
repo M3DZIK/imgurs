@@ -5,7 +5,9 @@ mod cli;
 mod config;
 
 fn main() {
+    // init logger
     SimpleLogger::new().init().expect("init SimpleLogger");
+    // init better_panic
     better_panic::install();
 
     // parse config file
@@ -14,5 +16,6 @@ fn main() {
     // create imgur client
     let client = ImgurClient::new(&config.imgur.id);
 
+    // parse cli
     cli::parse(client)
 }

@@ -32,7 +32,7 @@
 //! ```
 //!
 //! ## Image Upload
-//! ```ignore
+//! ```no_run
 //! // From URL
 //! let info = client.upload_image("https://i.imgur.com/lFaGr1x.png").await?;
 //!
@@ -41,19 +41,19 @@
 //! ```
 //!
 //! ## Delete Image
-//! ```ignore
+//! ```no_run
 //! client.delete_image("Delete Hash").await?; // delete hash
 //! ```
 //!
 //! ## Get Image Info
-//! ```ignore
+//! ```no_run
 //! let info = client.image_info("lFaGr1x").await?; // image id
 //!
 //! println!("{:?}", info);
 //! ```
 //!
 //! ## Get Client RateLimit
-//! ```ignore
+//! ```no_run
 //! let info = client.rate_limit.await?;
 //!
 //! println!("{:?}", info);

@@ -5,13 +5,12 @@ use std::io::{self, stdout};
 
 use crate::cli::{credits::*, delete_image::*, info_image::*, upload_image::*};
 
-// get program name and varsion from Cargo.toml
+// get version from Cargo.toml
 const VERSION: Option<&str> = option_env!("CARGO_PKG_VERSION");
-const NAME: Option<&str> = option_env!("CARGO_PKG_NAME");
 
 #[derive(Parser, Debug)]
 #[clap(
-    name = NAME.unwrap_or("unknown"),
+    name = "imgurs",
     about = "Imgur API CLI", long_about = None,
     version = VERSION.unwrap_or("unknown")
 )]
@@ -48,6 +47,7 @@ fn print_completions<G: Generator>(gen: G, app: &mut Command) {
     generate(gen, app, app.get_name().to_string(), &mut stdout())
 }
 
+#[tokio::main]
 pub async fn parse(client: ImgurClient) {
     let args = Cli::parse();
 

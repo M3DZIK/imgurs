@@ -4,16 +4,20 @@ macro_rules! api_url (
     );
 );
 
-use std::{fmt, fs, io, path::Path};
-
-use anyhow::Result;
 pub(crate) use api_url;
+
+use std::{fmt, fs, path::Path};
+
 use reqwest::Client;
 
-use super::*;
+use crate::{Result, Error, requests::{self, RateLimitInfo}, ImageInfo};
 
+/// Imgur Client
+#[derive(Clone)]
 pub struct ImgurClient {
+    /// Client id for a Imgur API
     pub client_id: String,
+    /// HTTP Client
     pub client: Client,
 }
 
@@ -24,7 +28,7 @@ impl fmt::Debug for ImgurClient {
 }
 
 impl ImgurClient {
-    /// Create new Imgur Client
+    /// Create a new Imgur Client
     /// ```
     /// use imgurs::ImgurClient;
     ///
@@ -51,21 +55,16 @@ impl ImgurClient {
         let mut image = path.to_string();
 
         // check if the specified file exists if not then check if it is a url
-        if Path::new(&path).exists() {
-            let bytes = fs::read(&path)?;
+        if Path::new(path).exists() {
+            let bytes = fs::read(path)?;
             image = base64::encode(bytes)
         }
-        // validate adress url
-        else if !validator::validate_url(&*path) {
-            let err = io::Error::new(
-                io::ErrorKind::Other,
-                format!("{path} is not url or file path"),
-            );
-
-            return Err(err.into());
+        // validate url adress
+        else if !validator::validate_url(path) {
+            Err(Error::InvalidUrlOrFile(path.to_string()))?;
         }
 
-        upload_image(self, image).await
+        requests::upload_image(self, image).await
     }
 
     /// Delete image from Imgur
@@ -83,10 +82,10 @@ impl ImgurClient {
     /// }
     /// ```
     pub async fn delete_image(&self, delete_hash: &str) -> Result<()> {
-        delete_image(self, delete_hash).await
+        requests::delete_image(self, delete_hash).await
     }
 
-    /// Client Rate Limit
+    /// Get Rame Limit of this Imgur Client
     /// ```
     /// use imgurs::ImgurClient;
     ///
@@ -98,10 +97,10 @@ impl ImgurClient {
     /// }
     /// ```
     pub async fn rate_limit(&self) -> Result<RateLimitInfo> {
-        rate_limit(self).await
+        requests::rate_limit(self).await
     }
 
-    /// Get Imgur image info
+    /// Get image info from a Imgur
     /// ```
     /// use imgurs::ImgurClient;
     ///
@@ -113,6 +112,6 @@ impl ImgurClient {
     /// }
     /// ```
     pub async fn image_info(&self, id: &str) -> Result<ImageInfo> {
-        get_image(self, id).await
+        requests::get_image(self, id).await
     }
 }

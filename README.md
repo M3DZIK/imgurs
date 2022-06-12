@@ -1,8 +1,18 @@
+[github]: https://img.shields.io/badge/github-8da0cb?style=for-the-badge&labelColor=555555&logo=github
+[total-lines]: https://img.shields.io/tokei/lines/github/MedzikUser/HomeDisk?style=for-the-badge&logo=github&color=fede00
+[code-size]: https://img.shields.io/github/languages/code-size/MedzikUser/HomeDisk?style=for-the-badge&color=c8df52&logo=github
+[crates-io]: https://img.shields.io/badge/crates.io-fc8d62?style=for-the-badge&labelColor=555555&logo=rust
+[docs-rs]: https://img.shields.io/badge/docs.rs-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs
+[ci]: https://img.shields.io/github/workflow/status/MedzikUser/rust-crypto-utils/Rust/main?style=for-the-badge&logo=github
+
 # Imgurs - CLI and Library for Imgur API
 
-![](https://img.shields.io/github/license/MedzikUser/imgurs)
-![](https://img.shields.io/tokei/lines/github/MedzikUser/imgurs)
-![](https://img.shields.io/github/languages/code-size/MedzikUser/imgurs)
+[![github]](https://github.com/MedzikUser/imgurs)
+[![total-lines]](https://github.com/MedzikUser/HomeDisk)
+[![code-size]](https://github.com/MedzikUser/HomeDisk)
+[![crates-io]](https://crates.io/crates/imgurs)
+[![docs-rs]](https://docs.rs/imgurs)
+[![ci]](https://github.com/MedzikUser/imgurs/actions/workflows/rust.yml)
 
 ## Screenshots
 

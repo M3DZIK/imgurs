@@ -1,5 +1,6 @@
 use serde_derive::{Deserialize, Serialize};
 
+/// Image Info Response
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ImageInfo {
     pub data: ImageInfoData,
@@ -7,6 +8,7 @@ pub struct ImageInfo {
     pub status: i32,
 }
 
+/// Image Info Reponse (`data` json)
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ImageInfoData {
     pub id: String,

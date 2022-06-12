@@ -1,3 +1,11 @@
+//! [![github]](https://github.com/MedzikUser/imgurs)
+//! [![crates-io]](https://crates.io/crates/imgurs)
+//! [![docs-rs]](https://docs.rs/imgurs)
+//!
+//! [github]: https://img.shields.io/badge/github-8da0cb?style=for-the-badge&labelColor=555555&logo=github
+//! [crates-io]: https://img.shields.io/badge/crates.io-fc8d62?style=for-the-badge&labelColor=555555&logo=rust
+//! [docs-rs]: https://img.shields.io/badge/docs.rs-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs
+//!
 //! This crate is an unofficial implementation of the [Imgur API](https://imgur.com) in Rust.
 //!
 //! # Installation
@@ -17,7 +25,7 @@
 //! # Example Usage
 //!
 //! ## Create new ImgurClient
-//! ```ignore
+//! ```
 //! use imgurs::ImgurClient;
 //!
 //! let client = ImgurClient::new("client id");
@@ -34,7 +42,7 @@
 //!
 //! ## Delete Image
 //! ```ignore
-//! client.delete_image("SuPeRsEcReTDeLeTeHaSh").await?; // delete hash
+//! client.delete_image("Delete Hash").await?; // delete hash
 //! ```
 //!
 //! ## Get Image Info

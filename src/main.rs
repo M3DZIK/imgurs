@@ -4,8 +4,7 @@ use simple_logger::SimpleLogger;
 mod cli;
 mod config;
 
-#[tokio::main]
-async fn main() {
+fn main() {
     SimpleLogger::new().init().expect("init SimpleLogger");
     better_panic::install();
 
@@ -15,5 +14,5 @@ async fn main() {
     // create imgur client
     let client = ImgurClient::new(&config.imgur.id);
 
-    cli::parse(client).await
+    cli::parse(client)
 }

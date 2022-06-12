@@ -1,9 +1,7 @@
-use std::io;
-
 use reqwest::Method;
 use serde::{Deserialize, Serialize};
 
-use super::{client::api_url, send_api_request, ImgurClient};
+use crate::{Error, Result, api_url, send_api_request, ImgurClient};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RateLimitInfo {
@@ -26,7 +24,7 @@ pub struct RateLimitData {
     pub client_remaining: i32,
 }
 
-pub async fn rate_limit(client: &ImgurClient) -> anyhow::Result<RateLimitInfo> {
+pub async fn rate_limit(client: &ImgurClient) -> Result<RateLimitInfo> {
     // get imgur api url
     let uri = api_url!("credits");
 
@@ -40,14 +38,9 @@ pub async fn rate_limit(client: &ImgurClient) -> anyhow::Result<RateLimitInfo> {
     if status.is_client_error() || status.is_server_error() {
         let body = res.text().await?;
 
-        let err = io::Error::new(
-            io::ErrorKind::Other,
-            format!("server returned non-successful status code = {status}, body = {body}"),
-        );
-
-        Err(err.into())
-    } else {
-        let content = res.json::<RateLimitInfo>().await?;
-        Ok(content)
+        return Err(Error::ApiError(status.as_u16(), body));
     }
+
+    // return `RateLimitInfo`
+    Ok(res.json().await?)
 }

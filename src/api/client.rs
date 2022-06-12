@@ -10,7 +10,10 @@ use std::{fmt, fs, path::Path};
 
 use reqwest::Client;
 
-use crate::{Result, Error, requests::{self, RateLimitInfo}, ImageInfo};
+use crate::{
+    requests::{self, RateLimitInfo},
+    Error, ImageInfo, Result,
+};
 
 /// Imgur Client
 #[derive(Clone)]

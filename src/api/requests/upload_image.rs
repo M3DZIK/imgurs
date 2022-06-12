@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use reqwest::Method;
 
-use crate::{Error, Result, api_url, send_api_request, ImgurClient, ImageInfo};
+use crate::{api_url, send_api_request, Error, ImageInfo, ImgurClient, Result};
 
 pub async fn upload_image(client: &ImgurClient, image: String) -> Result<ImageInfo> {
     // create http form (hashmap)

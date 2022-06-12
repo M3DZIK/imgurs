@@ -1,7 +1,7 @@
 use reqwest::Method;
 use serde::{Deserialize, Serialize};
 
-use crate::{Error, Result, api_url, send_api_request, ImgurClient};
+use crate::{api_url, send_api_request, Error, ImgurClient, Result};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RateLimitInfo {

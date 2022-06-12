@@ -1,6 +1,6 @@
 use reqwest::Method;
 
-use crate::{Error, Result, api_url, send_api_request, ImgurClient};
+use crate::{api_url, send_api_request, Error, ImgurClient, Result};
 
 pub async fn delete_image(client: &ImgurClient, delete_hash: &str) -> Result<()> {
     // get imgur api url

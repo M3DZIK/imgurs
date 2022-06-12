@@ -19,7 +19,7 @@
 //! your application, simply add it to your project's `Cargo.toml`.
 //! ```toml
 //! [dependencies]
-//! imgurs = "0.7.3"
+//! imgurs = "0.8.0"
 //! ```
 //!
 //! # Example Usage

@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.8.0] - 2022-06-18
+- add custom `Error` type
+- move api requests to `requests/` mod
+- comment code
+
 ## [0.7.4] - 2022-05-18
 ### HOTFIX
 - fixed built on macos and windows
@@ -119,7 +124,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.7.4...HEAD
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.8.0...HEAD
+[0.7.4]: https://github.com/MedzikUser/imgurs/commits/v0.8.0
 [0.7.4]: https://github.com/MedzikUser/imgurs/commits/v0.7.4
 [0.7.3]: https://github.com/MedzikUser/imgurs/commits/v0.7.3
 [0.7.2]: https://github.com/MedzikUser/imgurs/commits/v0.7.2

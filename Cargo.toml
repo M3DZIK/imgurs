@@ -35,7 +35,7 @@ colored = "2.0.0"
 clap_mangen = "0.1.8"
 discord-webhook = "0.1.0"
 thiserror = "1.0.31"
-clap = { version = "3.1.18", features = ["derive"] }
+clap = { version = "3.2.1", features = ["derive"] }
 log = { version = "0.4.17", features = ["release_max_level_info", "max_level_debug"] }
 simple_logger = { version = "2.1.0", default-features = false, features = ["colors"] }
 reqwest = { version = "0.11.10", default-features = false, features = ["json", "rustls-tls"] }

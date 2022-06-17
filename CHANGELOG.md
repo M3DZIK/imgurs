@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [0.8.0] - 2022-06-18
+## [0.8.1] - 2022-06-18
+- fix tests
+- add missing doc
+- use `serde` instead of `serde_derive`
+
+## [0.8.0] - 2022-06-13
 - add custom `Error` type
 - move api requests to `requests/` mod
 - comment code

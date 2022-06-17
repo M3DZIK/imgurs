@@ -1,4 +1,4 @@
-use serde_derive::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize};
 
 /// Image Info Response
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone)]

@@ -1,5 +1,4 @@
-use serde::Serialize;
-use serde_derive::Deserialize;
+use serde::{Serialize, Deserialize};
 
 pub mod toml;
 

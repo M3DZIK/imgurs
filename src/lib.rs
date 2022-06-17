@@ -28,36 +28,68 @@
 //! ```
 //! use imgurs::ImgurClient;
 //!
-//! let client = ImgurClient::new("client id");
+//! let client = ImgurClient::new("client_id");
 //! ```
 //!
 //! ## Image Upload
 //! ```no_run
-//! // From URL
-//! let info = client.upload_image("https://i.imgur.com/lFaGr1x.png").await?;
+//! use imgurs::ImgurClient;
 //!
-//! // From File
-//! let info = client.upload_image("path/to/image.png").await?;
+//! #[tokio::main]
+//! async fn main() {
+//!     let client = ImgurClient::new("client_id");
+//!
+//!     // From URL
+//!     let info = client.upload_image("https://i.imgur.com/lFaGr1x.png").await.unwrap();
+//!     println!("{:?}", info);
+//!
+//!     // From File
+//!     let info = client.upload_image("path/to/file.png").await.unwrap();
+//!     println!("{:?}", info);
+//! }
 //! ```
 //!
 //! ## Delete Image
 //! ```no_run
-//! client.delete_image("Delete Hash").await?; // delete hash
+//! use imgurs::ImgurClient;
+//!
+//! #[tokio::main]
+//! async fn main() {
+//!     let client = ImgurClient::new("client_id");
+//!
+//!     client.delete_image("delete_hash").await.unwrap(); // delete hash
+//! }
 //! ```
 //!
 //! ## Get Image Info
 //! ```no_run
-//! let info = client.image_info("lFaGr1x").await?; // image id
+//! use imgurs::ImgurClient;
 //!
-//! println!("{:?}", info);
+//! #[tokio::main]
+//! async fn main() {
+//!     let client = ImgurClient::new("client_id");
+//!
+//!     let info = client.image_info("lFaGr1x").await.unwrap(); // image id
+//!
+//!     println!("{:?}", info);
+//! }
 //! ```
 //!
 //! ## Get Client RateLimit
 //! ```no_run
-//! let info = client.rate_limit.await?;
+//! use imgurs::ImgurClient;
 //!
-//! println!("{:?}", info);
+//! #[tokio::main]
+//! async fn main() {
+//!     let client = ImgurClient::new("client_id");
+//!
+//!     let info = client.rate_limit().await.unwrap();
+//!
+//!     println!("{:?}", info);
+//! }
 //! ```
+
+#![warn(missing_docs)]
 
 mod api;
 

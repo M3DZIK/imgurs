@@ -12,27 +12,25 @@ pub enum Error {
     /// Invalid file path or URL adress
     #[error("{0} is not url or file path")]
     InvalidUrlOrFile(String),
-    /// Reqwest error
+    /// reqwest::Error
     #[error("reqwest error - {0}")]
     ReqwestError(reqwest::Error),
-    /// Io Error
+    /// std::io::Error
     #[error("io error - {0}")]
     IoError(std::io::Error),
 }
 
-/// reqwest::Error
 impl From<reqwest::Error> for Error {
     fn from(err: reqwest::Error) -> Self {
         Error::ReqwestError(err)
     }
 }
 
-/// reqwest::Error
 impl From<std::io::Error> for Error {
     fn from(err: std::io::Error) -> Self {
         Error::IoError(err)
     }
 }
 
-/// A `Result` alias where the `Err` case is `imgurs::Error`.
+/// A `Result` alias where the `Err` case is `imgurs::Error`
 pub type Result<T> = std::result::Result<T, Error>;

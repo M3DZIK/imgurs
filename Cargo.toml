@@ -30,7 +30,7 @@ anyhow = "1.0.58"
 better-panic = "0.3.0"
 validator = "0.15.0"
 colored = "2.0.0"
-clap_mangen = "0.1.8"
+clap_mangen = "0.1.9"
 discord-webhook = "0.1.0"
 thiserror = "1.0.31"
 serde = { version =  "1.0.137", features = ["derive"] }

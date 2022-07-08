@@ -5,7 +5,6 @@ pub mod credits;
 pub mod delete_image;
 pub mod info_image;
 pub mod upload_image;
-pub mod webhook;
 
 pub use parse::*;
 

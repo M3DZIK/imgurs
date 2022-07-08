@@ -486,17 +486,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "discord-webhook"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "db4453db59b7305e07e41cb100c0dd81c2950d1f8e7d8fb03efcee7504f54b99"
-dependencies = [
- "reqwest",
- "serde",
- "serde_json",
-]
-
-[[package]]
 name = "easy-parallel"
 version = "3.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -850,7 +839,6 @@ dependencies = [
  "clap_mangen",
  "colored",
  "dirs",
- "discord-webhook",
  "log",
  "notify-rust",
  "reqwest",

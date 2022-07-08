@@ -2,7 +2,7 @@ use imgurs::ImgurClient;
 use notify_rust::Notification;
 
 use crate::{
-    cli::{clipboard::set_clipboard, print_image_info, webhook::send_discord_webhook},
+    cli::{clipboard::set_clipboard, print_image_info},
     config::toml,
 };
 
@@ -45,12 +45,5 @@ pub async fn upload_image(client: ImgurClient, path: String) {
     // if enabled copy link to clipboard
     if config.clipboard.enabled {
         set_clipboard(&i.data.link)
-    }
-
-    // if enabled send embed with link and deletehash to discord (something like logger)
-    if config.discord_webhook.enabled {
-        send_discord_webhook(&i.data.link, &i.data.deletehash.unwrap())
-            .await
-            .expect("send discord webhook");
     }
 }

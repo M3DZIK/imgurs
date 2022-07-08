@@ -10,9 +10,12 @@ use std::{
 };
 use toml::from_str as toml_from_str;
 
+/// Configuration file path (in system config directory).
 const CONFIG_DIR: &str = "/imgurs/config.toml";
 
+/// Parse configuration file
 pub fn parse() -> Config {
+    // parse config or use default
     toml().unwrap_or_else(|err| {
         let mut stdout = std::io::stdout();
 
@@ -44,7 +47,7 @@ pub fn parse() -> Config {
 
             toml().expect("parse toml config")
         } else {
-            panic!("New config creation cancelled!")
+            panic!("Configuration file creation cancelled!")
         }
     })
 }

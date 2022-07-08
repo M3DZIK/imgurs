@@ -13,7 +13,7 @@ use reqwest::Client;
 /// Imgur Client
 #[derive(Clone)]
 pub struct ImgurClient {
-    /// Client id for a Imgur API
+    /// Imgur API Client ID
     pub client_id: String,
     /// HTTP Client
     pub client: Client,

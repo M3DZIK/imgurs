@@ -12,9 +12,9 @@ pub enum Error {
     /// Invalid file path or URL adress
     #[error("{0} is not url or file path")]
     InvalidUrlOrFile(String),
-    /// reqwest::Error
-    #[error("reqwest error - {0}")]
-    ReqwestError(reqwest::Error),
+    /// Imgur API error or reqwest::Error
+    #[error("send request to imgur api: {0}")]
+    SendApiRequest(reqwest::Error),
     /// std::io::Error
     #[error("io error - {0}")]
     IoError(std::io::Error),
@@ -22,7 +22,7 @@ pub enum Error {
 
 impl From<reqwest::Error> for Error {
     fn from(err: reqwest::Error) -> Self {
-        Error::ReqwestError(err)
+        Error::SendApiRequest(err)
     }
 }
 

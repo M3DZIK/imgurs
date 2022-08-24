@@ -2,8 +2,8 @@ use imgurs::ImgurClient;
 use notify_rust::Notification;
 
 use crate::{
-    cli::{clipboard::set_clipboard, print_image_info},
     config::toml,
+    imgur::{clipboard::set_clipboard, print_image_info},
 };
 
 // show notification

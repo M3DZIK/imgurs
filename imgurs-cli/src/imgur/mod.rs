@@ -1,12 +1,10 @@
-mod parse;
+mod clipboard;
+mod credits;
+mod delete_image;
+mod info_image;
+mod upload_image;
 
-pub mod clipboard;
-pub mod credits;
-pub mod delete_image;
-pub mod info_image;
-pub mod upload_image;
-
-pub use parse::*;
+pub use self::{clipboard::*, credits::*, delete_image::*, info_image::*, upload_image::*};
 
 use chrono::{prelude::DateTime, Utc};
 use colored::Colorize;

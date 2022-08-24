@@ -1,14 +1,14 @@
 mod client;
-mod error;
 mod image_type;
 mod requests;
 mod send_api_request;
 
 pub(crate) use client::api_url;
 pub use client::ImgurClient;
-pub use error::*;
 pub use image_type::*;
 pub use send_api_request::*;
+
+use crate::{Error, Result};
 
 impl ImgurClient {
     /// Create a new Imgur Client

@@ -853,9 +853,22 @@ dependencies = [
 name = "imgurs"
 version = "0.8.1"
 dependencies = [
+ "base64",
+ "notify-rust",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "tokio",
+ "validator",
+]
+
+[[package]]
+name = "imgurs-cli"
+version = "0.8.1"
+dependencies = [
  "anyhow",
  "arboard",
- "base64",
  "better-panic",
  "chrono",
  "clap",
@@ -863,16 +876,13 @@ dependencies = [
  "clap_mangen",
  "colored",
  "dirs",
+ "imgurs",
  "log",
  "notify-rust",
- "reqwest",
  "serde",
- "serde_json",
  "simple_logger",
- "thiserror",
  "tokio",
  "toml",
- "validator",
 ]
 
 [[package]]
@@ -1619,6 +1629,7 @@ dependencies = [
  "atty",
  "colored",
  "log",
+ "time 0.3.11",
  "winapi",
 ]
 
@@ -1787,9 +1798,17 @@ version = "0.3.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "72c91f41dcb2f096c05f0873d667dceec1087ce5bcf984ec8ffb19acddbb3217"
 dependencies = [
+ "itoa",
  "libc",
  "num_threads",
+ "time-macros",
 ]
+
+[[package]]
+name = "time-macros"
+version = "0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "42657b1a6f4d817cda8e7a0ace261fe0cc946cf3a80314390b22cc61ae080792"
 
 [[package]]
 name = "tinyvec"

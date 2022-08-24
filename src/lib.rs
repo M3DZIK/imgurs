@@ -91,6 +91,17 @@
 
 #![warn(missing_docs)]
 
-mod api;
+mod error;
+pub use error::*;
 
-pub use api::*;
+#[cfg(feature = "imgur")]
+mod imgur;
+
+#[cfg(feature = "imgur")]
+pub use imgur::*;
+
+#[cfg(feature = "null_pointer")]
+mod null_pointer;
+
+#[cfg(feature = "null_pointer")]
+pub use null_pointer::*;

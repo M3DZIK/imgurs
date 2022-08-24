@@ -28,9 +28,9 @@ pub fn parse() -> Config {
             .expect("failed to read line");
 
         if value.to_lowercase() != "n\n" {
-            warn!("Parse toml config: {err}! Creating config file...");
+            warn!("Parse toml config error: {err}! Creating config file...");
 
-            let default_config = include_str!(concat!("../../config.toml"));
+            let default_config = include_str!(concat!("../../../config.toml"));
 
             let sys_config_dir = config_dir().expect("find config dir");
             let config_dir = format!("{}{CONFIG_DIR}", sys_config_dir.to_string_lossy());

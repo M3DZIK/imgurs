@@ -38,14 +38,11 @@ impl NullPointer {
     /// }
     /// ```
     pub async fn upload(&self, path: &str) -> Result<String> {
-        // create http form (hashmap)
-        let mut form = HashMap::new();
+        let mut bytes = Vec::new();
 
         // check if the specified file exists if not then check if it is a url
         if std::path::Path::new(path).exists() {
-            let bytes = std::fs::read(path)?;
-
-            form.insert("file", bytes);
+            bytes = std::fs::read(path)?;
         }
         // validate url adress
         else {
@@ -65,7 +62,11 @@ impl NullPointer {
             format!("Imgur/{:?}", env!("CARGO_PKG_VERSION")),
         );
 
-        req = req.form(&form);
+        let part = reqwest::multipart::Part::bytes(bytes);
+
+        let form = reqwest::multipart::Form::new().part("file", part);
+
+        req = req.multipart(form);
 
         // build Request
         let req = req.build()?;

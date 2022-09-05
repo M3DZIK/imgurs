@@ -26,7 +26,7 @@ pub async fn send_api_request(
         );
 
     // if exists add HashMap to Request
-    if form != None {
+    if form.is_some() {
         req = req.form(&form.unwrap())
     }
 

@@ -11,7 +11,6 @@ authors = ["MedzikUser <nivua1fn@duck.com>"]
 homepage = "https://github.com/MedzikUser/imgurs"
 repository = "https://github.com/MedzikUser/imgurs.git"
 keywords = ["imgur", "imgur-api", "image", "image-upload"]
-rust-version = "1.58"
 edition = "2021"
 
 [features]
@@ -22,18 +21,17 @@ null_pointer = []
 
 [profile.release]
 lto = true
-panic = 'abort'
 opt-level = 'z'
 codegen-units = 1
 
 [dependencies]
-base64 = "0.13.0"
-notify-rust = "4.5.8"
-validator = "0.16.0"
-thiserror = "1.0.34"
-serde_json = "1.0.85"
-serde = { version = "1.0.144", features = ["derive"] }
-reqwest = { version = "0.11.11", default-features = false, features = ["json", "rustls-tls", "multipart"] }
+base64 = "0.13"
+notify-rust = "4.5"
+validator = "0.16"
+thiserror = "1.0"
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+reqwest = { version = "0.11", default-features = false, features = ["json", "rustls-tls", "multipart"] }
 
 [dev-dependencies]
-tokio = { version = "1.21.0", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.21", features = ["macros", "rt-multi-thread"] }

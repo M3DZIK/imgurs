@@ -8,7 +8,6 @@ homepage = "https://github.com/MedzikUser/imgurs"
 repository = "https://github.com/MedzikUser/imgurs.git"
 keywords = ["imgur", "imgur-api", "image", "image-upload"]
 categories = ["command-line-utilities"]
-rust-version = "1.58"
 edition = "2021"
 
 [[bin]]
@@ -16,21 +15,21 @@ name = "imgurs"
 path = "src/main.rs"
 
 [dependencies]
-anyhow = "1.0.64"
-clap = { version = "3.2.20", features = ["derive"] }
-clap_complete = "3.2.4"
-clap_mangen = "0.1.11"
-chrono = "0.4.22"
-colored = "2.0.0"
-notify-rust = "4.5.8"
-better-panic = "0.3.0"
-dirs = "4.0.0"
-log = "0.4.17"
-simple_logger = "2.3.0"
-toml = "0.5.9"
-serde = { version = "1.0.144", features = ["derive"] }
-tokio = { version = "1.21.0", features = ["macros", "rt-multi-thread"] }
+anyhow = "1.0"
+clap = { version = "3.2", features = ["derive"] }
+clap_complete = "3.2"
+clap_mangen = "0.1"
+chrono = "0.4"
+colored = "2.0"
+notify-rust = "4.5"
+better-panic = "0.3"
+dirs = "4.0"
+log = "0.4"
+simple_logger = "2.3"
+toml = "0.5"
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.21", features = ["macros", "rt-multi-thread"] }
 imgurs = { path = "..", features = ["full"] }
 
 [target.'cfg(not(all(unix, not(any(target_os="macos", target_os="android", target_os="emscripten")))))'.dependencies]
-arboard = "2.1.1"
+arboard = "2.1"

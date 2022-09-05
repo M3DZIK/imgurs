@@ -4,7 +4,7 @@ resolver = "2"
 
 [package]
 name = "imgurs"
-version = "0.8.1"
+version = "0.9.0"
 description = "API for Imgur"
 license = "BSD-3-Clause"
 authors = ["MedzikUser <nivua1fn@duck.com>"]

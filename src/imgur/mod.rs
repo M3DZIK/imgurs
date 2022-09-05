@@ -101,14 +101,14 @@ impl ImgurClient {
     }
 
     /// Get album info from a Imgur
-    /// ```
+    /// ```no_run
     /// use imgurs::ImgurClient;
     ///
     /// #[tokio::main]
     /// async fn main() {
     ///     let client = ImgurClient::new("3e3ce0d7ac14d56");
     ///
-    ///     client.album_info("lFaGr1x").await.expect("delete album");
+    ///     client.album_info("id").await.expect("get album info");
     /// }
     /// ```
     pub async fn album_info(&self, id: &str) -> Result<AlbumInfo> {

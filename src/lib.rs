@@ -99,9 +99,3 @@ mod imgur;
 
 #[cfg(feature = "imgur")]
 pub use imgur::*;
-
-#[cfg(feature = "null_pointer")]
-mod null_pointer;
-
-#[cfg(feature = "null_pointer")]
-pub use null_pointer::*;

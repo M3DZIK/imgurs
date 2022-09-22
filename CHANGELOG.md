@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- next-header -->
 
 ## [Unreleased]
+
+## [0.9.1] - 2022-09-22
+- delete debug info from cli in release build
+
+## [0.9.0] - 2022-09-05
 - moved cli to other crate
 - added get_album function
 

@@ -851,7 +851,7 @@ dependencies = [
 
 [[package]]
 name = "imgurs"
-version = "0.9.0"
+version = "0.9.1"
 dependencies = [
  "base64",
  "notify-rust",
@@ -865,7 +865,7 @@ dependencies = [
 
 [[package]]
 name = "imgurs-cli"
-version = "0.9.0"
+version = "0.9.1"
 dependencies = [
  "anyhow",
  "arboard",

@@ -1,10 +1,11 @@
 use std::io::stdout;
 
-use crate::imgur::*;
 use clap::{Command, CommandFactory, Parser};
 use clap_complete::{generate, Generator, Shell};
 use imgurs::ImgurClient;
 use simple_logger::SimpleLogger;
+
+use crate::imgur::*;
 
 mod config;
 mod imgur;
@@ -12,7 +13,8 @@ mod imgur;
 #[derive(Parser, Debug)]
 #[clap(
     name = "imgurs",
-    about = "Imgur API CLI", long_about = None,
+    about = "Imgur API CLI",
+    long_about = env!("CARGO_PKG_DESCRIPTION"),
     version = env!("CARGO_PKG_VERSION"),
 )]
 enum Cli {
@@ -41,7 +43,6 @@ enum Cli {
 #[tokio::main]
 async fn main() {
     SimpleLogger::new().init().unwrap();
-    better_panic::install();
 
     // parse config file
     let config = config::toml::parse();
@@ -54,7 +55,7 @@ async fn main() {
     match args {
         Cli::Credits => credits(client).await,
 
-        Cli::Upload { path } => upload_image(client, path.to_string()).await,
+        Cli::Upload { path } => upload_image(client, path).await,
 
         Cli::Delete { delete_hash } => delete_image(client, delete_hash.to_string()).await,
 
@@ -68,14 +69,14 @@ async fn main() {
             }
 
             print_completions(shell, &mut app)
-        }
+        },
 
         Cli::Manpage => {
             let clap_app = Cli::command();
             let man = clap_mangen::Man::new(clap_app);
 
             man.render(&mut stdout())
-                .expect("failed to generate man page");
-        }
+                .expect("Failed to generate man page");
+        },
     }
 }

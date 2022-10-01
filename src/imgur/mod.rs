@@ -33,7 +33,10 @@ impl ImgurClient {
     /// async fn main() {
     ///     let client = ImgurClient::new("3e3ce0d7ac14d56");
     ///
-    ///     client.upload_image("https://i.imgur.com/lFaGr1x.png").await.expect("upload image");
+    ///     client
+    ///         .upload_image("https://i.imgur.com/lFaGr1x.png")
+    ///         .await
+    ///         .expect("upload image");
     /// }
     /// ```
     pub async fn upload_image(&self, path: &str) -> Result<ImageInfo> {
@@ -60,10 +63,16 @@ impl ImgurClient {
     /// async fn main() {
     ///     let client = ImgurClient::new("3e3ce0d7ac14d56");
     ///
-    ///     let image = client.upload_image("https://i.imgur.com/lFaGr1x.png").await.expect("upload image");
+    ///     let image = client
+    ///         .upload_image("https://i.imgur.com/lFaGr1x.png")
+    ///         .await
+    ///         .expect("upload image");
     ///     let deletehash = image.data.deletehash.unwrap();
     ///
-    ///     client.delete_image(&deletehash).await.expect("delete image");
+    ///     client
+    ///         .delete_image(&deletehash)
+    ///         .await
+    ///         .expect("delete image");
     /// }
     /// ```
     pub async fn delete_image(&self, delete_hash: &str) -> Result<()> {

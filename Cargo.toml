@@ -4,20 +4,21 @@ resolver = "2"
 
 [package]
 name = "imgurs"
-version = "0.9.1"
+version = "0.10.0"
 description = "API for Imgur"
 license = "BSD-3-Clause"
-authors = ["MedzikUser <nivua1fn@duck.com>"]
+authors = ["MedzikUser <medzik@duck.com>"]
 homepage = "https://github.com/MedzikUser/imgurs"
 repository = "https://github.com/MedzikUser/imgurs.git"
 keywords = ["imgur", "imgur-api", "image", "image-upload"]
 edition = "2021"
 
 [features]
-default = ["imgur"]
-full = ["imgur", "null_pointer"]
+default = ["imgur", "rustls-tls"]
+full = ["imgur"]
+rustls-tls = ["reqwest/rustls-tls"]
+native-tls = ["reqwest/native-tls"]
 imgur = []
-null_pointer = []
 
 [profile.release]
 lto = true
@@ -25,13 +26,18 @@ opt-level = 'z'
 codegen-units = 1
 
 [dependencies]
+# HTTP
+reqwest = { version = "0.11", default-features = false, features = ["json", "multipart"] }
+# Request
 base64 = "0.13"
-notify-rust = "4.5"
-validator = "0.16"
-thiserror = "1.0"
-serde_json = "1.0"
+validator = "0.16" # validate url address
+# Response
 serde = { version = "1.0", features = ["derive"] }
-reqwest = { version = "0.11", default-features = false, features = ["json", "rustls-tls", "multipart"] }
+serde_json = "1.0"
+
+# Errors
+thiserror = "1.0"
 
 [dev-dependencies]
+# Async tests
 tokio = { version = "1.21", features = ["macros", "rt-multi-thread"] }

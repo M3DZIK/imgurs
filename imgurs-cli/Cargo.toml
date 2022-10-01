@@ -3,7 +3,7 @@ name = "imgurs-cli"
 version = "0.9.1"
 description = "CLI for Imgur"
 license = "BSD-3-Clause"
-authors = ["MedzikUser <nivua1fn@duck.com>"]
+authors = ["MedzikUser <medzik@duck.com>"]
 homepage = "https://github.com/MedzikUser/imgurs"
 repository = "https://github.com/MedzikUser/imgurs.git"
 keywords = ["imgur", "imgur-api", "image", "image-upload"]
@@ -15,21 +15,32 @@ name = "imgurs"
 path = "src/main.rs"
 
 [dependencies]
-anyhow = "1.0"
-clap = { version = "3.2", features = ["derive"] }
-clap_complete = "3.2"
-clap_mangen = "0.1"
-chrono = "0.4"
-colored = "2.0"
-notify-rust = "4.5"
-better-panic = "0.3"
-dirs = "4.0"
-simple_logger = "2.3"
-toml = "0.5"
-log = { version = "0.4", features = ["release_max_level_info"] }
-serde = { version = "1.0", features = ["derive"] }
+# Async runtime
 tokio = { version = "1.21", features = ["macros", "rt-multi-thread"] }
-imgurs = { path = "..", version = "0.9.0", features = ["full"] }
+
+# CLI
+clap = { version = "4.0", features = ["derive"] }
+clap_complete = "4.0"
+clap_mangen = "0.2"
+
+# Errors
+anyhow = "1.0"
+
+# Logger
+log = { version = "0.4", features = ["release_max_level_info"] }
+simple_logger = "2.3"
+colored = "2.0"
+
+# Config
+toml = "0.5"
+serde = { version = "1.0", features = ["derive"] }
+
+# Other
+chrono = "0.4" # parse upload date
+notify-rust = "4.5" # send notification after upload
+dirs = "4.0" # get system configuration directory
+
+imgurs = { path = "..", version = "0.10.0", features = ["full"] }
 
 [target.'cfg(not(all(unix, not(any(target_os="macos", target_os="android", target_os="emscripten")))))'.dependencies]
-arboard = "2.1"
+arboard = "2.1" # copy url to clipboard

@@ -40,7 +40,10 @@
 //!     let client = ImgurClient::new("client_id");
 //!
 //!     // From URL
-//!     let info = client.upload_image("https://i.imgur.com/lFaGr1x.png").await.unwrap();
+//!     let info = client
+//!         .upload_image("https://i.imgur.com/lFaGr1x.png")
+//!         .await
+//!         .unwrap();
 //!     println!("{:?}", info);
 //!
 //!     // From File

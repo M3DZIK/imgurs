@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.10.0] - 2022-10-01
+- add configuration for tls (rustls-tls or native-tls)
+
 ## [0.9.1] - 2022-09-22
 - delete debug info from cli in release build
 

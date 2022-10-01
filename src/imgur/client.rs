@@ -4,10 +4,9 @@ macro_rules! api_url (
     );
 );
 
-pub(crate) use api_url;
-
 use std::fmt;
 
+pub(crate) use api_url;
 use reqwest::Client;
 
 /// Imgur Client

@@ -4,12 +4,13 @@ mod delete_image;
 mod info_image;
 mod upload_image;
 
-pub use self::{clipboard::*, credits::*, delete_image::*, info_image::*, upload_image::*};
+use std::time::{Duration, UNIX_EPOCH};
 
 use chrono::{prelude::DateTime, Utc};
 use colored::Colorize;
 use imgurs::ImageInfo;
-use std::time::{Duration, UNIX_EPOCH};
+
+pub use self::{clipboard::*, credits::*, delete_image::*, info_image::*, upload_image::*};
 
 // print image information from imgur
 pub fn print_image_info(i: &ImageInfo) {

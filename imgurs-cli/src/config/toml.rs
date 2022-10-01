@@ -1,14 +1,15 @@
-use super::Config;
-
-use colored::Colorize;
-use dirs::config_dir;
-use log::warn;
 use std::{
     fs::{create_dir_all, read_to_string, File},
     io::{self, Write as _},
     path::Path,
 };
+
+use colored::Colorize;
+use dirs::config_dir;
+use log::warn;
 use toml::from_str as toml_from_str;
+
+use super::Config;
 
 /// Configuration file path (in system config directory).
 const CONFIG_DIR: &str = "/imgurs/config.toml";

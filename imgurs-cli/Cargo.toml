@@ -28,7 +28,7 @@ anyhow = "1.0"
 
 # Logger
 log = { version = "0.4", features = ["release_max_level_info"] }
-simple_logger = "2.3"
+simple_logger = "3.0"
 colored = "2.0"
 
 # Config

@@ -43,4 +43,4 @@ dirs = "4.0" # get system configuration directory
 imgurs = { path = "..", version = "0.10.0", features = ["full"] }
 
 [target.'cfg(not(all(unix, not(any(target_os="macos", target_os="android", target_os="emscripten")))))'.dependencies]
-arboard = "2.1" # copy url to clipboard
+arboard = "3.2" # copy url to clipboard

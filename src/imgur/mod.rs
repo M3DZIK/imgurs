@@ -24,10 +24,10 @@ impl ImgurClient {
         let client = reqwest::Client::new();
         ImgurClient { client_id, client }
     }
-    
+
     /// Create a new Imgur Client with the provided `reqwest::Client`
     ///
-    /// This allows for customization of the http client settings like timeout or the user agent. 
+    /// This allows for customization of the http client settings like timeout or the user agent.
     /// ```
     /// use imgurs::ImgurClient;
     /// use reqwest::Client;
@@ -36,7 +36,7 @@ impl ImgurClient {
     ///
     /// let client = ImgurClient::with_http_client("3e3ce0d7ac14d56", http_client);
     /// ```
-    pub fn new(client_id: &str, http_client: reqwest::Client) -> Self {
+    pub fn with_http_client(client_id: &str, http_client: reqwest::Client) -> Self {
         let client_id = client_id.to_string();
         ImgurClient { client_id, client: http_client }
     }

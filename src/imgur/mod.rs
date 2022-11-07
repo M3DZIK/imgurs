@@ -32,13 +32,16 @@ impl ImgurClient {
     /// use imgurs::ImgurClient;
     /// use reqwest::Client;
     ///
-    /// let http_client = Client::builder().build();
+    /// let http_client = Client::builder().build().unwrap();
     ///
     /// let client = ImgurClient::with_http_client("3e3ce0d7ac14d56", http_client);
     /// ```
     pub fn with_http_client(client_id: &str, http_client: reqwest::Client) -> Self {
         let client_id = client_id.to_string();
-        ImgurClient { client_id, client: http_client }
+        ImgurClient {
+            client_id,
+            client: http_client,
+        }
     }
 
     /// Upload image to Imgur

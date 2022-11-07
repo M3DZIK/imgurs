@@ -1,6 +1,6 @@
 [package]
 name = "imgurs-cli"
-version = "0.10.0"
+version = "0.11.0"
 description = "CLI for Imgur"
 license = "BSD-3-Clause"
 authors = ["MedzikUser <medzik@duck.com>"]
@@ -40,7 +40,7 @@ chrono = "0.4" # parse upload date
 notify-rust = "4.5" # send notification after upload
 dirs = "4.0" # get system configuration directory
 
-imgurs = { path = "..", version = "0.10.0", features = ["full"] }
+imgurs = { path = "..", features = ["full"] }
 
 [target.'cfg(not(all(unix, not(any(target_os="macos", target_os="android", target_os="emscripten")))))'.dependencies]
 arboard = "3.2" # copy url to clipboard

@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.11.0] - 2022-11-07
+### Added
+- Added `with_http_client` method to ImgurClient #87, thanks to @NotNorom
+
+### Changed
+- Updated crate arboard to v3
+- Updated crate simple_logger to v4
+
 ## [0.10.0] - 2022-10-01
 - add configuration for tls (rustls-tls or native-tls)
 
@@ -139,8 +147,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.8.0...HEAD
-[0.7.4]: https://github.com/MedzikUser/imgurs/commits/v0.8.0
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/MedzikUser/imgurs/commits/v0.11.0
+[0.10.0]: https://github.com/MedzikUser/imgurs/commits/v0.10.0
+[0.9.1]: https://github.com/MedzikUser/imgurs/commits/v0.9.1
+[0.9.0]: https://github.com/MedzikUser/imgurs/commits/v0.9.0
+[0.8.1]: https://github.com/MedzikUser/imgurs/commits/v0.8.1
+[0.8.0]: https://github.com/MedzikUser/imgurs/commits/v0.8.0
 [0.7.4]: https://github.com/MedzikUser/imgurs/commits/v0.7.4
 [0.7.3]: https://github.com/MedzikUser/imgurs/commits/v0.7.3
 [0.7.2]: https://github.com/MedzikUser/imgurs/commits/v0.7.2

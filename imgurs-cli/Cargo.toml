@@ -37,7 +37,7 @@ serde = { version = "1.0", features = ["derive"] }
 
 # Other
 chrono = "0.4" # parse upload date
-notify-rust = "4.5" # send notification after upload
+notify-rust = "4.6" # send notification after upload
 dirs = "4.0" # get system configuration directory
 
 imgurs = { path = "..", version = "0.11.0", features = ["full"] }

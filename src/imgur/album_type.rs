@@ -18,7 +18,7 @@ pub struct AlbumInfoData {
     /// Album ID
     pub id: String,
     /// Title of the album
-    pub title: String,
+    pub title: Option<String>,
     /// Description of the album
     pub description: Option<String>,
     pub datetime: i64,
@@ -27,7 +27,7 @@ pub struct AlbumInfoData {
     pub cover_width: i64,
     pub cover_height: i64,
     pub account_url: Option<String>,
-    pub account_id: Option<String>,
+    pub account_id: Option<AccountId>,
     pub privacy: String,
     pub layout: String,
     pub views: i64,
@@ -43,6 +43,13 @@ pub struct AlbumInfoData {
     pub is_album: bool,
     pub images: Vec<ImageInfoData>,
     pub ad_config: AdConfig,
+}
+
+#[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone)]
+#[serde(untagged)]
+pub enum AccountId {
+    String(String),
+    Int(i64),
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone)]

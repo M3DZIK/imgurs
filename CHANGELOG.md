@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.11.1] - 2022-12-11
+### Fixed
+- `album_title` can be null, `account_id` can be null, string or number #92, thanks to @NotNorom
+
+### Changed
+- Updated dependencies
+
 ## [0.11.0] - 2022-11-07
 ### Added
 - Added `with_http_client` method to ImgurClient #87, thanks to @NotNorom
@@ -147,7 +154,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.11.0...HEAD
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.11.1...HEAD
+[0.11.1]: https://github.com/MedzikUser/imgurs/commits/v0.11.1
 [0.11.0]: https://github.com/MedzikUser/imgurs/commits/v0.11.0
 [0.10.0]: https://github.com/MedzikUser/imgurs/commits/v0.10.0
 [0.9.1]: https://github.com/MedzikUser/imgurs/commits/v0.9.1

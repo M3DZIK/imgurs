@@ -74,4 +74,4 @@ Download imgurs-windows.exe from [the releases page](https://github.com/MedzikUs
 ### **Compile with Cargo**
 Make sure you have a recent version of Rust. Then you can run
 
-    cargo install imgurs
+    cargo install imgurs-cli

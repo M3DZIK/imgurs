@@ -16,7 +16,7 @@ path = "src/main.rs"
 
 [dependencies]
 # Async runtime
-tokio = { version = "1.22", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.23", features = ["macros", "rt-multi-thread"] }
 
 # CLI
 clap = { version = "4.0", features = ["derive"] }

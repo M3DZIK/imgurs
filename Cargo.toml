@@ -29,7 +29,7 @@ codegen-units = 1
 # HTTP
 reqwest = { version = "0.11", default-features = false, features = ["json", "multipart"] }
 # Request
-base64 = "0.13"
+base64 = "0.20"
 validator = "0.16" # validate url address
 # Response
 serde = { version = "1.0", features = ["derive"] }
@@ -40,4 +40,4 @@ thiserror = "1.0"
 
 [dev-dependencies]
 # Async tests
-tokio = { version = "1.22", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.23", features = ["macros", "rt-multi-thread"] }

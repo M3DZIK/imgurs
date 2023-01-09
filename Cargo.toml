@@ -29,7 +29,7 @@ codegen-units = 1
 # HTTP
 reqwest = { version = "0.11", default-features = false, features = ["json", "multipart"] }
 # Request
-base64 = "0.20"
+base64 = "0.21"
 validator = "0.16" # validate url address
 # Response
 serde = { version = "1.0", features = ["derive"] }

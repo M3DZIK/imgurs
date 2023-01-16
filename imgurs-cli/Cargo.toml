@@ -19,8 +19,8 @@ path = "src/main.rs"
 tokio = { version = "1.24", features = ["macros", "rt-multi-thread"] }
 
 # CLI
-clap = { version = "4.0", features = ["derive"] }
-clap_complete = "4.0"
+clap = { version = "4.1", features = ["derive"] }
+clap_complete = "4.1"
 clap_mangen = "0.2"
 
 # Errors

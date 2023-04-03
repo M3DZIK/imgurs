@@ -59,12 +59,14 @@ impl ImgurClient {
     /// }
     /// ```
     pub async fn upload_image(&self, path: &str) -> Result<ImageInfo> {
+        use base64::prelude::{Engine, BASE64_STANDARD};
+
         let mut image = path.to_string();
 
         // check if the specified file exists if not then check if it is a url
         if std::path::Path::new(path).exists() {
             let bytes = std::fs::read(path)?;
-            image = base64::encode(bytes)
+            image = BASE64_STANDARD.encode(bytes)
         }
         // validate url adress
         else if !validator::validate_url(path) {

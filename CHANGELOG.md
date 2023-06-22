@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.11.2] - 2023-06-22
+- Updated dependencies
+- Fix deprecation warning of base64 crate.
+
 ## [0.11.1] - 2022-12-11
 ### Fixed
 - `album_title` can be null, `account_id` can be null, string or number #92, thanks to @NotNorom

@@ -27,10 +27,10 @@ codegen-units = 1
 
 [dependencies]
 # HTTP
-reqwest = { version = "0.11", default-features = false, features = ["json", "multipart"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "multipart"] }
 # Request
-base64 = "0.21"
-validator = "0.16" # validate url address
+base64 = "0.22"
+url = "2.5.0" # validate url address
 # Response
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
@@ -40,4 +40,4 @@ thiserror = "1.0"
 
 [dev-dependencies]
 # Async tests
-tokio = { version = "1.25", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.37", features = ["macros", "rt-multi-thread"] }

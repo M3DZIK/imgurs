@@ -70,7 +70,7 @@ impl ImgurClient {
             image = BASE64_STANDARD.encode(bytes)
         }
         // validate url adress
-        else if Url::parse(&path).is_err() {
+        else if Url::parse(path).is_err() {
             Err(Error::InvalidUrlOrFile(path.to_string()))?;
         }
 

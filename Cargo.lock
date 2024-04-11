@@ -1088,7 +1088,7 @@ dependencies = [
 
 [[package]]
 name = "imgurs"
-version = "0.11.2"
+version = "0.11.3"
 dependencies = [
  "base64",
  "reqwest",
@@ -1101,7 +1101,7 @@ dependencies = [
 
 [[package]]
 name = "imgurs-cli"
-version = "0.11.2"
+version = "0.11.3"
 dependencies = [
  "anyhow",
  "arboard",

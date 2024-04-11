@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.11.3] - 2024-04-11
+- Updated dependencies
+- Replaced url validation with url crate in imgurs-cli
+
 ## [0.11.2] - 2023-06-22
 - Updated dependencies
 - Fix deprecation warning of base64 crate.
@@ -158,7 +162,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - upload image
 
 <!-- next-url -->
-[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.11.1...HEAD
+[Unreleased]: https://github.com/MedzikUser/imgurs/compare/v0.11.3...HEAD
+[0.11.3]: https://github.com/MedzikUser/imgurs/commits/v0.11.3
+[0.11.2]: https://github.com/MedzikUser/imgurs/commits/v0.11.2
 [0.11.1]: https://github.com/MedzikUser/imgurs/commits/v0.11.1
 [0.11.0]: https://github.com/MedzikUser/imgurs/commits/v0.11.0
 [0.10.0]: https://github.com/MedzikUser/imgurs/commits/v0.10.0

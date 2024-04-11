@@ -1,6 +1,6 @@
 [package]
 name = "imgurs-cli"
-version = "0.11.2"
+version = "0.11.3"
 description = "CLI for Imgur"
 license = "BSD-3-Clause"
 authors = ["M3DZIK <me@medzik.dev>"]

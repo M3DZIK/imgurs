@@ -1,4 +1,4 @@
-//! [![github]](https://github.com/MedzikUser/imgurs)
+//! [![github]](https://github.com/M3DZIK/imgurs)
 //! [![crates-io]](https://crates.io/crates/imgurs)
 //! [![docs-rs]](https://docs.rs/imgurs)
 //!
@@ -19,7 +19,7 @@
 //! your application, simply add it to your project's `Cargo.toml`.
 //! ```toml
 //! [dependencies]
-//! imgurs = "0.8.0"
+//! imgurs = "0.11.3"
 //! ```
 //!
 //! # Example Usage

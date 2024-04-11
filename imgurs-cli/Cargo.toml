@@ -16,11 +16,11 @@ path = "src/main.rs"
 
 [dependencies]
 # Async runtime
-tokio = { version = "1.25", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.37", features = ["macros", "rt-multi-thread"] }
 
 # CLI
-clap = { version = "4.1", features = ["derive"] }
-clap_complete = "4.1"
+clap = { version = "4.5", features = ["derive"] }
+clap_complete = "4.5"
 clap_mangen = "0.2"
 
 # Errors
@@ -28,19 +28,19 @@ anyhow = "1.0"
 
 # Logger
 log = { version = "0.4", features = ["release_max_level_info"] }
-simple_logger = "4.0"
-colored = "2.0"
+simple_logger = "4.3"
+colored = "2.1"
 
 # Config
-toml = "0.7"
+toml = "0.8"
 serde = { version = "1.0", features = ["derive"] }
 
 # Other
 chrono = "0.4" # parse upload date
-notify-rust = "4.7" # send notification after upload
-dirs = "4.0" # get system configuration directory
+notify-rust = "4.11" # send notification after upload
+dirs = "5.0" # get system configuration directory
 
 imgurs = { path = "..", version = "0.11.0", features = ["full"] }
 
 [target.'cfg(not(all(unix, not(any(target_os="macos", target_os="android", target_os="emscripten")))))'.dependencies]
-arboard = "3.2" # copy url to clipboard
+arboard = "3.3" # copy url to clipboard

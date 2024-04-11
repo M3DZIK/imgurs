@@ -9,6 +9,7 @@ pub(crate) use client::api_url;
 pub use client::ImgurClient;
 pub use image_type::*;
 pub use send_api_request::*;
+use url::Url;
 
 use crate::{Error, Result};
 
@@ -69,7 +70,7 @@ impl ImgurClient {
             image = BASE64_STANDARD.encode(bytes)
         }
         // validate url adress
-        else if !validator::validate_url(path) {
+        else if Url::parse(&path).is_err() {
             Err(Error::InvalidUrlOrFile(path.to_string()))?;
         }
 
